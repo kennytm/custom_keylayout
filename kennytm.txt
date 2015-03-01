@@ -1,0 +1,2343 @@
+
+#{{{ Roman numerals
+
+Ⅰ   rI
+Ⅱ   rII
+Ⅲ   rIII
+Ⅳ   rIV
+Ⅴ   rV
+Ⅵ   rVI
+Ⅶ   rVII
+Ⅷ   rVIII
+Ⅸ   rIX
+Ⅹ   rX
+Ⅺ   rXI
+Ⅻ   rXII
+Ⅼ   rL
+Ⅽ   rC
+Ⅾ   rD
+Ⅿ   rM
+
+ⅰ   ri
+ⅱ   rii
+ⅲ   riii
+ⅳ   riv
+ⅴ   rv
+ⅵ   rvi
+ⅶ   rvii
+ⅷ   rviii
+ⅸ   rix
+ⅹ   rx
+ⅺ   rxi
+ⅻ   rxii
+ⅼ   rl
+ⅽ   rc
+ⅾ   rd
+ⅿ   rm
+
+#}}}
+
+#{{{ Arrows
+
+→   ->
+⇒   =>
+↦   |->
+⇥   ->|
+←   <-
+⇤   |<-
+↑   ^|
+↓   |v
+↔︎   <->
+⇔   <=>
+↕︎   ^|v
+↘︎   \v
+↗︎   /^
+↖︎   ^\
+↙︎   v/
+⇏   /=>
+⇏   =/>
+⇎   <=/>
+⇎   /<=>
+↛   /->
+↛   -/>
+↚   /<-
+↚   </-
+
+↵   &crarr
+
+
+#}}}
+
+#{{{ Currency symbols
+
+€   c=
+€   C=
+€   =c
+€   =C
+¥   y=
+¥   Y=
+¥   =y
+¥   =Y
+¢   c|
+¢   C|
+¢   |c
+¢   |C
+£   -L
+£   -l
+₩   =W
+₩   W=
+฿   B|
+฿   |B
+
+#}}}
+
+#{{{ Superscripts and subscripts
+
+⁰   ^0
+¹   ^1
+²   ^2
+³   ^3
+⁴   ^4
+⁵   ^5
+⁶   ^6
+⁷   ^7
+⁸   ^8
+⁹   ^9
+⁽   ^(
+⁾   ^)
+⁺   ^+
+⁻   ^-
+⁼   ^=
+₀   _0
+₁   _1
+₂   _2
+₃   _3
+₄   _4
+₅   _5
+₆   _6
+₇   _7
+₈   _8
+₉   _9
+₍   _(
+₎   _)
+₊   _+
+₋   _-
+₌   _=
+
+#}}}
+
+#{{{ Fractions
+
+¼   14
+½   12
+¾   34
+⅓   13
+⅔   23
+⅕   15
+⅖   25
+⅗   35
+⅘   45
+⅙   16
+⅚   56
+⅛   18
+⅜   38
+⅝   58
+⅞   78
+⅐   17
+⅑   19
+⅒   110
+↉   03
+
+#}}}
+
+#{{{ Greek
+
+# The 24 Greek alphabets maps to English alphabets using the convention of the
+# "Symbol" typeface.
+#
+# The variant letters are the main letters + "v".
+
+µ   mu
+π   pi
+
+Α   gA
+Β   gB
+Γ   gG
+Δ   gD
+Ε   gE
+Ζ   gZ
+Η   gH
+Θ   gQ
+Ι   gI
+Κ   gK
+Λ   gL
+Μ   gM
+Ν   gN
+Ξ   gX
+Ο   gO
+Π   gP
+Ρ   gR
+Σ   gS
+Τ   gT
+Υ   gU
+Φ   gF
+Χ   gC
+Ψ   gY
+Ω   gW
+
+α   ga
+β   gb
+γ   gg
+δ   gd
+ε   ge
+ζ   gz
+η   gh
+θ   gq
+ι   gi
+κ   gk
+λ   gl
+μ   gm
+ν   gn
+ξ   gx
+ο   go
+π   gp
+ρ   gr
+σ   gs
+τ   gt
+υ   gu
+φ   gf
+χ   gc
+ψ   gy
+ω   gw
+
+ς   gsf
+ς   gsv
+ϐ   gbv
+ϑ   gqv
+ϒ   gUv
+ϕ   gfv
+ϖ   gpv
+ϰ   gkv
+ϱ   grv
+ϴ   gQv
+ϵ   gev
+
+#}}}
+
+#{{{ Hiragana
+
+# import unicodedata
+# for code in range(0x3041, 0x3096+1):
+#     c = chr(code)
+#     name = unicodedata.name(c)
+#     name = name[16:].replace('SMALL ', '_')
+#     print('{}   j{}'.format(c, name))
+#     print('{}ん j{}N'.format(c, name))
+#     print('{}っ j{}T'.format(c, name))
+#     if name.endswith('I'):
+#         print('{}ゃ j{}YA'.format(c, name[:-1]))
+#         print('{}ゅ j{}YU'.format(c, name[:-1]))
+#         print('{}ょ j{}YO'.format(c, name[:-1]))
+#         print('{}ゃん   j{}YAN'.format(c, name[:-1]))
+#         print('{}ゅん   j{}YUN'.format(c, name[:-1]))
+#         print('{}ょん   j{}YON'.format(c, name[:-1]))
+#         print('{}ゃっ   j{}YAT'.format(c, name[:-1]))
+#         print('{}ゅっ   j{}YUT'.format(c, name[:-1]))
+#         print('{}ょっ   j{}YOT'.format(c, name[:-1]))
+
+ぁ   j_A
+あ   jA
+あん jAN
+あっ jAT
+ぃ   j_I
+い   jI
+いん jIN
+いっ jIT
+ぅ   j_U
+う   jU
+うん jUN
+うっ jUT
+ぇ   j_E
+え   jE
+えん jEN
+えっ jET
+ぉ   j_O
+お   jO
+おん jON
+おっ jOT
+か   jKA
+かん jKAN
+かっ jKAT
+が   jGA
+がん jGAN
+がっ jGAT
+き   jKI
+きん jKIN
+きっ jKIT
+きゃ jKYA
+きゅ jKYU
+きょ jKYO
+きゃん   jKYAN
+きゅん   jKYUN
+きょん   jKYON
+きゃっ   jKYAT
+きゅっ   jKYUT
+きょっ   jKYOT
+ぎ   jGI
+ぎん jGIN
+ぎっ jGIT
+ぎゃ jGYA
+ぎゅ jGYU
+ぎょ jGYO
+ぎゃん   jGYAN
+ぎゅん   jGYUN
+ぎょん   jGYON
+ぎゃっ   jGYAT
+ぎゅっ   jGYUT
+ぎょっ   jGYOT
+く   jKU
+くん jKUN
+くっ jKUT
+ぐ   jGU
+ぐん jGUN
+ぐっ jGUT
+け   jKE
+けん jKEN
+けっ jKET
+げ   jGE
+げん jGEN
+げっ jGET
+こ   jKO
+こん jKON
+こっ jKOT
+ご   jGO
+ごん jGON
+ごっ jGOT
+さ   jSA
+さん jSAN
+さっ jSAT
+ざ   jZA
+ざん jZAN
+ざっ jZAT
+し   jSHI
+しん jSHIN
+しっ jSHIT
+しゃ jSHA
+しゅ jSHU
+しょ jSHO
+しゃん   jSHAN
+しゅん   jSHUN
+しょん   jSHON
+しゃっ   jSHAT
+しゅっ   jSHUT
+しょっ   jSHOT
+じ   jJI
+じん jJIN
+じっ jJIT
+じゃ jJA
+じゅ jJU
+じょ jJO
+じゃん   jJAN
+じゅん   jJUN
+じょん   jJON
+じゃっ   jJAT
+じゅっ   jJUT
+じょっ   jJOT
+す   jSU
+すん jSUN
+すっ jSUT
+ず   jZU
+ずん jZUN
+ずっ jZUT
+せ   jSE
+せん jSEN
+せっ jSET
+ぜ   jZE
+ぜん jZEN
+ぜっ jZET
+そ   jSO
+そん jSON
+そっ jSOT
+ぞ   jZO
+ぞん jZON
+ぞっ jZOT
+た   jTA
+たん jTAN
+たっ jTAT
+だ   jDA
+だん jDAN
+だっ jDAT
+ち   jCHI
+ちん jCHIN
+ちっ jCHIT
+ちゃ jCHA
+ちゅ jCHU
+ちょ jCHO
+ちゃん   jCHAN
+ちゅん   jCHUN
+ちょん   jCHON
+ちゃっ   jCHAT
+ちゅっ   jCHUT
+ちょっ   jCHOT
+ぢ   jCHI"
+っ   j_TSU
+つ   jTSU
+つん jTSUN
+つっ jTSUT
+づ   jTSU"
+て   jTE
+てん jTEN
+てっ jTET
+で   jDE
+でん jDEN
+でっ jDET
+と   jTO
+とん jTON
+とっ jTOT
+ど   jDO
+どん jDON
+どっ jDOT
+な   jNA
+なん jNAN
+なっ jNAT
+に   jNI
+にん jNIN
+にっ jNIT
+にゃ jNYA
+にゅ jNYU
+にょ jNYO
+にゃん   jNYAN
+にゅん   jNYUN
+にょん   jNYON
+にゃっ   jNYAT
+にゅっ   jNYUT
+にょっ   jNYOT
+ぬ   jNU
+ぬん jNUN
+ぬっ jNUT
+ね   jNE
+ねん jNEN
+ねっ jNET
+の   jNO
+のん jNON
+のっ jNOT
+は   jHA
+はん jHAN
+はっ jHAT
+ば   jBA
+ばん jBAN
+ばっ jBAT
+ぱ   jPA
+ぱん jPAN
+ぱっ jPAT
+ひ   jHI
+ひん jHIN
+ひっ jHIT
+ひゃ jHYA
+ひゅ jHYU
+ひょ jHYO
+ひゃん   jHYAN
+ひゅん   jHYUN
+ひょん   jHYON
+ひゃっ   jHYAT
+ひゅっ   jHYUT
+ひょっ   jHYOT
+び   jBI
+びん jBIN
+びっ jBIT
+びゃ jBYA
+びゅ jBYU
+びょ jBYO
+びゃん   jBYAN
+びゅん   jBYUN
+びょん   jBYON
+びゃっ   jBYAT
+びゅっ   jBYUT
+びょっ   jBYOT
+ぴ   jPI
+ぴん jPIN
+ぴっ jPIT
+ぴゃ jPYA
+ぴゅ jPYU
+ぴょ jPYO
+ぴゃん   jPYAN
+ぴゅん   jPYUN
+ぴょん   jPYON
+ぴゃっ   jPYAT
+ぴゅっ   jPYUT
+ぴょっ   jPYOT
+ふ   jFU
+ふん jFUN
+ふっ jFUT
+ぶ   jBU
+ぶん jBUN
+ぶっ jBUT
+ぷ   jPU
+ぷん jPUN
+ぷっ jPUT
+へ   jHE
+へん jHEN
+へっ jHET
+べ   jBE
+べん jBEN
+べっ jBET
+ぺ   jPE
+ぺん jPEN
+ぺっ jPET
+ほ   jHO
+ほん jHON
+ほっ jHOT
+ぼ   jBO
+ぼん jBON
+ぼっ jBOT
+ぽ   jPO
+ぽん jPON
+ぽっ jPOT
+ま   jMA
+まん jMAN
+まっ jMAT
+み   jMI
+みん jMIN
+みっ jMIT
+みゃ jMYA
+みゅ jMYU
+みょ jMYO
+みゃん   jMYAN
+みゅん   jMYUN
+みょん   jMYON
+みゃっ   jMYAT
+みゅっ   jMYUT
+みょっ   jMYOT
+む   jMU
+むん jMUN
+むっ jMUT
+め   jME
+めん jMEN
+めっ jMET
+も   jMO
+もん jMON
+もっ jMOT
+ゃ   j_YA
+や   jYA
+やん jYAN
+やっ jYAT
+ゅ   j_YU
+ゆ   jYU
+ゆん jYUN
+ゆっ jYUT
+ょ   j_YO
+よ   jYO
+よん jYON
+よっ jYOT
+ら   jRA
+らん jRAN
+らっ jRAT
+り   jRI
+りん jRIN
+りっ jRIT
+りゃ jRYA
+りゅ jRYU
+りょ jRYO
+りゃん   jRYAN
+りゅん   jRYUN
+りょん   jRYON
+りゃっ   jRYAT
+りゅっ   jRYUT
+りょっ   jRYOT
+る   jRU
+るん jRUN
+るっ jRUT
+れ   jRE
+れん jREN
+れっ jRET
+ろ   jRO
+ろん jRON
+ろっ jROT
+ゎ   j_WA
+わ   jWA
+わん jWAN
+わっ jWAT
+ゐ   jWI
+ゑ   jWE
+を   jWO
+をん jWON
+をっ jWOT
+ん   jN
+ゔ   jVU
+ゕ   j_KA
+ゖ   j_KE
+
+#}}}
+
+#{{{ Katakana
+
+# import unicodedata
+# for code in range(0x30a1, 0x30f6+1):
+#     c = chr(code)
+#     name = unicodedata.name(c)
+#     name = name[16:].replace('SMALL ', '_').lower()
+#     print('{}   j{}'.format(c, name))
+#     print('{}ン j{}n'.format(c, name))
+#     print('{}ッ j{}t'.format(c, name))
+#     if name.endswith('i'):
+#         print('{}ャ j{}ya'.format(c, name[:-1]))
+#         print('{}ュ j{}yu'.format(c, name[:-1]))
+#         print('{}ョ j{}yo'.format(c, name[:-1]))
+#         print('{}ャン   j{}yan'.format(c, name[:-1]))
+#         print('{}ュン   j{}yun'.format(c, name[:-1]))
+#         print('{}ョン   j{}yon'.format(c, name[:-1]))
+#         print('{}ャッ   j{}yat'.format(c, name[:-1]))
+#         print('{}ュッ   j{}yut'.format(c, name[:-1]))
+#         print('{}ョッ   j{}yot'.format(c, name[:-1]))
+
+ァ   j_a
+ア   ja
+アン jan
+アッ jat
+ィ   j_i
+イ   ji
+イン jin
+イッ jit
+ゥ   j_u
+ウ   ju
+ウン jun
+ウッ jut
+ェ   j_e
+エ   je
+エン jen
+エッ jet
+ォ   j_o
+オ   jo
+オン jon
+オッ jot
+カ   jka
+カン jkan
+カッ jkat
+ガ   jga
+ガン jgan
+ガッ jgat
+キ   jki
+キン jkin
+キッ jkit
+キャ jkya
+キュ jkyu
+キョ jkyo
+キャン   jkyan
+キュン   jkyun
+キョン   jkyon
+キャッ   jkyat
+キュッ   jkyut
+キョッ   jkyot
+ギ   jgi
+ギン jgin
+ギッ jgit
+ギャ jgya
+ギュ jgyu
+ギョ jgyo
+ギャン   jgyan
+ギュン   jgyun
+ギョン   jgyon
+ギャッ   jgyat
+ギュッ   jgyut
+ギョッ   jgyot
+ク   jku
+クン jkun
+クッ jkut
+グ   jgu
+グン jgun
+グッ jgut
+ケ   jke
+ケン jken
+ケッ jket
+ゲ   jge
+ゲン jgen
+ゲッ jget
+コ   jko
+コン jkon
+コッ jkot
+ゴ   jgo
+ゴン jgon
+ゴッ jgot
+サ   jsa
+サン jsan
+サッ jsat
+ザ   jza
+ザン jzan
+ザッ jzat
+シ   jshi
+シン jshin
+シッ jshit
+シャ jsha
+シュ jshu
+ショ jsho
+シャン   jshan
+シュン   jshun
+ション   jshon
+シャッ   jshat
+シュッ   jshut
+ショッ   jshot
+ジ   jji
+ジン jjin
+ジッ jjit
+ジャ jja
+ジュ jju
+ジョ jjo
+ジャン   jjan
+ジュン   jjun
+ジョン   jjon
+ジャッ   jjat
+ジュッ   jjut
+ジョッ   jjot
+ス   jsu
+スン jsun
+スッ jsut
+ズ   jzu
+ズン jzun
+ズッ jzut
+セ   jse
+セン jsen
+セッ jset
+ゼ   jze
+ゼン jzen
+ゼッ jzet
+ソ   jso
+ソン json
+ソッ jsot
+ゾ   jzo
+ゾン jzon
+ゾッ jzot
+タ   jta
+タン jtan
+タッ jtat
+ダ   jda
+ダン jdan
+ダッ jdat
+チ   jchi
+チン jchin
+チッ jchit
+チャ jcha
+チュ jchu
+チョ jcho
+チャン   jchan
+チュン   jchun
+チョン   jchon
+チャッ   jchat
+チュッ   jchut
+チョッ   jchot
+ヂ   jchi"
+ッ   j_tsu
+ツ   jtsu
+ツン jtsun
+ツッ jtsut
+ヅ   jtsu"
+テ   jte
+テン jten
+テッ jtet
+デ   jde
+デン jden
+デッ jdet
+ト   jto
+トン jton
+トッ jtot
+ド   jdo
+ドン jdon
+ドッ jdot
+ナ   jna
+ナン jnan
+ナッ jnat
+ニ   jni
+ニン jnin
+ニッ jnit
+ニャ jnya
+ニュ jnyu
+ニョ jnyo
+ニャン   jnyan
+ニュン   jnyun
+ニョン   jnyon
+ニャッ   jnyat
+ニュッ   jnyut
+ニョッ   jnyot
+ヌ   jnu
+ヌン jnun
+ヌッ jnut
+ネ   jne
+ネン jnen
+ネッ jnet
+ノ   jno
+ノン jnon
+ノッ jnot
+ハ   jha
+ハン jhan
+ハッ jhat
+バ   jba
+バン jban
+バッ jbat
+パ   jpa
+パン jpan
+パッ jpat
+ヒ   jhi
+ヒン jhin
+ヒッ jhit
+ヒャ jhya
+ヒュ jhyu
+ヒョ jhyo
+ヒャン   jhyan
+ヒュン   jhyun
+ヒョン   jhyon
+ヒャッ   jhyat
+ヒュッ   jhyut
+ヒョッ   jhyot
+ビ   jbi
+ビン jbin
+ビッ jbit
+ビャ jbya
+ビュ jbyu
+ビョ jbyo
+ビャン   jbyan
+ビュン   jbyun
+ビョン   jbyon
+ビャッ   jbyat
+ビュッ   jbyut
+ビョッ   jbyot
+ピ   jpi
+ピン jpin
+ピッ jpit
+ピャ jpya
+ピュ jpyu
+ピョ jpyo
+ピャン   jpyan
+ピュン   jpyun
+ピョン   jpyon
+ピャッ   jpyat
+ピュッ   jpyut
+ピョッ   jpyot
+フ   jfu
+フン jfun
+フッ jfut
+ブ   jbu
+ブン jbun
+ブッ jbut
+プ   jpu
+プン jpun
+プッ jput
+ヘ   jhe
+ヘン jhen
+ヘッ jhet
+ベ   jbe
+ベン jben
+ベッ jbet
+ペ   jpe
+ペン jpen
+ペッ jpet
+ホ   jho
+ホン jhon
+ホッ jhot
+ボ   jbo
+ボン jbon
+ボッ jbot
+ポ   jpo
+ポン jpon
+ポッ jpot
+マ   jma
+マン jman
+マッ jmat
+ミ   jmi
+ミン jmin
+ミッ jmit
+ミャ jmya
+ミュ jmyu
+ミョ jmyo
+ミャン   jmyan
+ミュン   jmyun
+ミョン   jmyon
+ミャッ   jmyat
+ミュッ   jmyut
+ミョッ   jmyot
+ム   jmu
+ムン jmun
+ムッ jmut
+メ   jme
+メン jmen
+メッ jmet
+モ   jmo
+モン jmon
+モッ jmot
+ャ   j_ya
+ヤ   jya
+ヤン jyan
+ヤッ jyat
+ュ   j_yu
+ユ   jyu
+ユン jyun
+ユッ jyut
+ョ   j_yo
+ヨ   jyo
+ヨン jyon
+ヨッ jyot
+ラ   jra
+ラン jran
+ラッ jrat
+リ   jri
+リン jrin
+リッ jrit
+リャ jrya
+リュ jryu
+リョ jryo
+リャン   jryan
+リュン   jryun
+リョン   jryon
+リャッ   jryat
+リュッ   jryut
+リョッ   jryot
+ル   jru
+ルン jrun
+ルッ jrut
+レ   jre
+レン jren
+レッ jret
+ロ   jro
+ロン jron
+ロッ jrot
+ヮ   j_wa
+ワ   jwa
+ワン jwan
+ワッ jwat
+ヰ   jwi
+ヱ   jwe
+ヲ   jwo
+ン   jn
+ヴ   jvu
+ヴン jvun
+ヴッ jvut
+ヵ   j_ka
+ヶ   j_ke
+ヷ  jwa"
+ヸ  jwi"
+ヹ  jwe"
+ヺ  jwo"
+ー  j-
+・  j.
+
+# Extended katakanas
+
+キェ    jkye
+クヮ    jkwa
+クィ    jkwi
+クェ    jkwe
+クォ    jkwo
+ギェ    jgye
+グヮ    jgwa
+グィ    jgwi
+グェ    jgwe
+グォ    jgwo
+スィ    jsi
+スィン  jsin
+スィッ  jsit
+シェ    jshe
+シェン  jshen
+シェッ  jshet
+ズィ    jzi
+ズィン  jzin
+ズィッ  jzit
+ジェ    jje
+ジェン  jjen
+ジェッ  jjet
+ティ    jti
+ティン  jtin
+ティッ  jtit
+トゥ    jtu
+トゥン  jtun
+トゥッ  jtut
+テュ    jtyu
+チェ    jche
+チェン  jchen
+チェッ  jchet
+ツァ    jtsa
+ツィ    jtsi
+ツェ    jtse
+ツォ    jtso
+ディ    jdi
+ディン  jdin
+ディッ  jdit
+ドゥ    jdu
+ドゥン  jdun
+ドゥッ  jdut
+デュ    jdyu
+ニェ    jnye
+ホゥ    jhu
+ホゥン  jhun
+ホゥッ  jhut
+ヒェ    jhye
+ファ    jfa
+ファン  jfan
+ファッ  jfat
+フィ    jfi
+フィン  jfin
+フィッ  jfit
+フェ    jfe
+フェン  jfen
+フェッ  jfet
+フォ    jfo
+フォン  jfon
+フォッ  jfot
+フャ    jfya
+フュ    jfyu
+フィェ  jfye
+フョ    jfyo
+ビェ    jbye
+ピェ    jpye
+ミェ    jmye
+イィ    jyi
+イィン  jyin
+イィッ  jyit
+イェ    jye
+イェン  jyen
+イェッ  jyet
+ウィ    jwi2
+ウゥ    jwu
+ウェ    jwe2
+ウォ    jwo2
+ウュ    jwyu
+ヴァ    jva
+ヴァン  jvan
+ヴァッ  jvat
+ヴィ    jvi
+ヴィン  jvin
+ヴィッ  jvit
+ヴェ    jve
+ヴェン  jven
+ヴェッ  jvet
+ヴォ    jvo
+ヴォン  jvon
+ヴォッ  jvot
+ヴャ    jvya
+ヴュ    jvyu
+ヴィェ  jvye
+ヴョ    jvyo
+
+ㇰ  j_ku
+ㇱ  j_shi
+ㇲ  j_su
+ㇳ  j_to
+ㇴ  j_nu
+ㇵ  j_ha
+ㇶ  j_hi
+ㇷ  j_fu
+ㇸ  j_he
+ㇹ  j_ho
+ㇺ  j_mu
+ㇻ  j_ra
+ㇼ  j_ri
+ㇽ  j_ru
+ㇾ  j_re
+ㇿ  j_ro
+
+#}}}
+
+#{{{ Zhuyin (Bopomofo)
+
+# ü maps to v here.
+
+ㄅ  zb
+ㄆ  zp
+ㄇ  zm
+ㄈ  zf
+ㄉ  zd
+ㄊ  zt
+ㄋ  zn
+ㄌ  zl
+ㄍ  zg
+ㄎ  zk
+ㄏ  zh
+ㄐ  zj
+ㄑ  zq
+ㄒ  zx
+ㄓ  zzh
+ㄔ  zch
+ㄕ  zsh
+ㄖ  zr
+ㄗ  zz
+ㄘ  zc
+ㄙ  zs
+ㄚ  za
+ㄛ  zo
+ㄜ  ze
+ㄝ  z^e
+ㄞ  zai
+ㄟ  zei
+ㄠ  zao
+ㄡ  zou
+ㄢ  zan
+ㄣ  zen
+ㄤ  zang
+ㄥ  zeng
+ㄦ  zer
+ㄧ  zi
+ㄨ  zu
+ㄩ  zv
+ㄧㄚ    zia
+ㄧㄝ    zie
+ㄧㄠ    ziao
+ㄧㄡ    ziu
+ㄧㄢ    zian
+ㄧㄣ    zin
+ㄧㄤ    ziang
+ㄧㄥ    zing
+ㄨㄚ    zua
+ㄨㄛ    zuo
+ㄨㄞ    zuai
+ㄨㄟ    zui
+ㄨㄢ    zuan
+ㄨㄣ    zun
+ㄨㄤ    zuang
+ㄨㄥ    zong
+ㄩㄝ    zue
+ㄩㄢ    zvan
+ㄩㄣ    zvn
+ㄩㄥ    ziong
+¯   z1
+ˊ   z2
+ˇ   z3
+ˋ   z4
+˙   z0
+
+#}}}
+
+#{{{ Math symbols
+
+×   xx
+÷   -:
+÷   :-
+±   +-
+∓   -+
+∂   pd
+∈   in
+∉   /in
+∋   ni
+≤   <=
+≥   >=
+≮   /<
+≯   />
+≰   /<=
+≱   />=
+≲   <~
+≳   >~
+≴   /<~
+≅   ~=
+≆   ~/=
+≇   /~=
+≈   ~~
+≉   /~~
+≓   :=
+≠   /=
+≡   ==
+≢   /==
+⊕   o+
+⊖   o-
+⊗   ox
+⊘   o/
+⊢   |-
+∞   inf
+∅   {}
+
+−   &minus
+¬   &not
+∩   &cap
+∪   &cup
+∝   &prop
+ℵ   &aleph
+ℶ   &beth
+ℷ   &gimel
+ℸ   &daleth
+∀   &forall
+∃   &exist
+∄   &nexist
+∅   &empty
+∇   &nabla
+⊂   &sub
+⊃   &sup
+⊄   &nsub
+⊅   &nsup
+⊆   &sube
+⊇   &supe
+⊈   &nsube
+⊉   &nsupe
+⊊   &subne
+⊋   &supne
+∧   &and
+∨   &or
+≪   &ll
+≫   &gg
+≺   &prec
+≻   &succ
+∏   &prod
+∐   &coprod
+∑   &sum
+∗   &lowast
+∘   &ring
+∎   &qed
+√   &sqrt
+∫   &int
+∬   &iint
+∭   &iiint
+∮   &oint
+∯   &oiint
+∰   &oiiint
+∴   &there4
+∵   &becaus
+⊏   &sqsub
+⊐   &sqsup
+⊑   &sqsube
+⊒   &sqsupe
+⊓   &sqcap
+⊔   &sqcup
+⊤   &top
+⊥   &bot
+⊲   &trisub
+⊳   &trisup
+⊴   &trisube
+⊵   &trisupe
+⊻   &xor
+⊼   &nand
+⊽   &nor
+⊙   &odot
+⟨   &lang
+⟩   &rang
+
+#}}}
+
+#{{{ Punctuations
+
+¡   !!
+¿   ??
+“   <"
+”   >"
+‘   <'
+’   >'
+‚   ,'
+„   ,"
+°   oo
+ª   ^_a
+º   ^_o
+…   ..
+\xad    -.  # SHY
+–   --.
+—   ---
+§   so
+¶   pp
+†   +|
+‡   ++
+‰   %o
+※   x:
+·   ^.
+«   <<
+»   >>
+‹   .<
+›   .>
+
+#}}}
+
+#{{{ Mac Keyboard characters
+
+⌘   cmd
+⎋   esc
+⌥   alt
+⌦   del
+⌫   bs
+␣   sp
+
+#}}}
+
+#{{{ Enclosed characters
+
+🄰   [A]
+🄱   [B]
+🄲   [C]
+🄳   [D]
+🄴   [E]
+🄵   [F]
+🄶   [G]
+🄷   [H]
+🄸   [I]
+🄹   [J]
+🄺   [K]
+🄻   [L]
+🄼   [M]
+🄽   [N]
+🄾   [O]
+🄿   [P]
+🅀   [Q]
+🅁   [R]
+🅂   [S]
+🅃   [T]
+🅄   [U]
+🅅   [V]
+🅆   [W]
+🅇   [X]
+🅈   [Y]
+🅉   [Z]
+Ⓐ   (A)
+Ⓑ   (B)
+Ⓒ   (C)
+Ⓓ   (D)
+Ⓔ   (E)
+Ⓕ   (F)
+Ⓖ   (G)
+Ⓗ   (H)
+Ⓘ   (I)
+Ⓙ   (J)
+Ⓚ   (K)
+Ⓛ   (L)
+Ⓜ   (M)
+Ⓝ   (N)
+Ⓞ   (O)
+Ⓟ   (P)
+Ⓠ   (Q)
+Ⓡ   (R)
+Ⓢ   (S)
+Ⓣ   (T)
+Ⓤ   (U)
+Ⓥ   (V)
+Ⓦ   (W)
+Ⓧ   (X)
+Ⓨ   (Y)
+Ⓩ   (Z)
+ⓐ   (a)
+ⓑ   (b)
+ⓒ   (c)
+ⓓ   (d)
+ⓔ   (e)
+ⓕ   (f)
+ⓖ   (g)
+ⓗ   (h)
+ⓘ   (i)
+ⓙ   (j)
+ⓚ   (k)
+ⓛ   (l)
+ⓜ   (m)
+ⓝ   (n)
+ⓞ   (o)
+ⓟ   (p)
+ⓠ   (q)
+ⓡ   (r)
+ⓢ   (s)
+ⓣ   (t)
+ⓤ   (u)
+ⓥ   (v)
+ⓦ   (w)
+ⓧ   (x)
+ⓨ   (y)
+ⓩ   (z)
+🅐   (((A)))
+🅑   (((B)))
+🅒   (((C)))
+🅓   (((D)))
+🅔   (((E)))
+🅕   (((F)))
+🅖   (((G)))
+🅗   (((H)))
+🅘   (((I)))
+🅙   (((J)))
+🅚   (((K)))
+🅛   (((L)))
+🅜   (((M)))
+🅝   (((N)))
+🅞   (((O)))
+🅟   (((P)))
+🅠   (((Q)))
+🅡   (((R)))
+🅢   (((S)))
+🅣   (((T)))
+🅤   (((U)))
+🅥   (((V)))
+🅦   (((W)))
+🅧   (((X)))
+🅨   (((Y)))
+🅩   (((Z)))
+🅰   [[[A]]]
+🅱   [[[B]]]
+🅲   [[[C]]]
+🅳   [[[D]]]
+🅴   [[[E]]]
+🅵   [[[F]]]
+🅶   [[[G]]]
+🅷   [[[H]]]
+🅸   [[[I]]]
+🅹   [[[J]]]
+🅺   [[[K]]]
+🅻   [[[L]]]
+🅼   [[[M]]]
+🅽   [[[N]]]
+🅾   [[[O]]]
+🅿   [[[P]]]
+🆀   [[[Q]]]
+🆁   [[[R]]]
+🆂   [[[S]]]
+🆃   [[[T]]]
+🆄   [[[U]]]
+🆅   [[[V]]]
+🆆   [[[W]]]
+🆇   [[[X]]]
+🆈   [[[Y]]]
+🆉   [[[Z]]]
+⓪   (0)
+①   (1)
+②   (2)
+③   (3)
+④   (4)
+⑤   (5)
+⑥   (6)
+⑦   (7)
+⑧   (8)
+⑨   (9)
+⑩   (10)
+⑪   (11)
+⑫   (12)
+⑬   (13)
+⑭   (14)
+⑮   (15)
+⑯   (16)
+⑰   (17)
+⑱   (18)
+⑲   (19)
+⑳   (20)
+㉑   (21)
+㉒   (22)
+㉓   (23)
+㉔   (24)
+㉕   (25)
+㉖   (26)
+㉗   (27)
+㉘   (28)
+㉙   (29)
+㉚   (30)
+㉛   (31)
+㉜   (32)
+㉝   (33)
+㉞   (34)
+㉟   (35)
+㊱   (36)
+㊲   (37)
+㊳   (38)
+㊴   (39)
+㊵   (40)
+㊶   (41)
+㊷   (42)
+㊸   (43)
+㊹   (44)
+㊺   (45)
+㊻   (46)
+㊼   (47)
+㊽   (48)
+㊾   (49)
+㊿   (50)
+⓿   (((0)))
+❶   (((1)))
+❷   (((2)))
+❸   (((3)))
+❹   (((4)))
+❺   (((5)))
+❻   (((6)))
+❼   (((7)))
+❽   (((8)))
+❾   (((9)))
+❿   (((10)))
+⓫   (((11)))
+⓬   (((12)))
+⓭   (((13)))
+⓮   (((14)))
+⓯   (((15)))
+⓰   (((16)))
+⓱   (((17)))
+⓲   (((18)))
+⓳   (((19)))
+⓴   (((20)))
+⓵   ((1))
+⓶   ((2))
+⓷   ((3))
+⓸   ((4))
+⓹   ((5))
+⓺   ((6))
+⓻   ((7))
+⓼   ((8))
+⓽   ((9))
+⓾   ((10))
+
+
+#}}}
+
+#{{{ Letter-like symbols
+
+©   oc
+®   or
+℠   sm
+™   tm
+№   No
+
+#}}}
+
+#{{{ Musical symbols
+
+♩   #q
+♪   #e
+♫   #E
+♬   #S
+♭   #b
+♮   #f
+♯   ##
+
+#}}}
+
+#{{{ Symbols
+
+★   **
+☺   :)
+☹   :(
+✓   V
+✗   X
+
+☂   &umbrella
+☃   &snowman
+☆   &star
+♠︎   &spades
+♣︎   &clubs
+♥︎   &hearts
+♦︎   &diams
+♀   &female
+♂   &male
+
+#}}}
+
+#{{{ Accented latin letters
+
+# Accents are applied from top to bottom. This section should include most of
+# the characters from the blocks:
+
+# - Latin-1 Supplement
+# - Latin Extended-A
+# - Latin Extended-B
+# - Latin Extended Additional
+# - Latin Extended-C (some)
+
+# Latin Extended-D is not considered here
+
+# Symbols appear on the left:
+#
+# ` → ` (grave)
+# ' → ´ (acute)
+# ^ → ˆ (circumflex)
+# ~ → ˜ (tilde)
+# " → ¨ (diaeresis / umlaut)
+# o → ˚ (ring)
+# , → ¸ (cedilla)
+# , → ˛ (ogonek)
+# - → ¯ (macron)
+# u → ˘ (breve)
+# . → ˙ (dot)
+# / → (slash or strike-through)
+# '' → ˝ (double acute)
+# `` → ˵ (double grave)
+# v → ˇ (caron)
+# U → (inverted breve)
+# ; → (cedilla/comma) (used when , already means another thing)
+# ? → (hook)
+#
+# Symbols appear on the right:
+#
+# ' → horn or hook (for vietnamese)
+# . → dot below
+# - → macron below
+# ^ → circumflex below
+# o → ring below
+# ~ → tilde below, etc.
+
+#{{{ A
+
+À   `A
+Á   'A
+Â   ^A
+Ã   ~A
+Ä   "A
+Å   oA
+Ā   -A
+Ă   uA
+Ą   ,A
+Ǎ   vA
+Ǟ   -"A
+Ǡ   -.A
+Ǻ   'oA
+Ȁ   ``A
+Ȃ   UA
+Ȧ   .A
+Ḁ   Ao
+Ạ   A.
+Ả   ?A
+Ấ   '^A
+Ầ   `^A
+Ẩ   ?^A
+Ẫ   ~^A
+Ậ   ^A.
+Ắ   'uA
+Ằ   `uA
+Ẳ   ?uA
+Ẵ   ~uA
+Ặ   uA.
+Ⱥ   /A
+
+à   `a
+á   'a
+â   ^a
+ã   ~a
+ä   "a
+å   oa
+ā   -a
+ă   ua
+ą   ,a
+ǎ   va
+ǟ   -"a
+ǡ   -.a
+ǻ   'oa
+ȁ   ``a
+ȃ   Ua
+ȧ   .a
+ḁ   ao
+ạ   a.
+ả   ?a
+ấ   '^a
+ầ   `^a
+ẩ   ?^a
+ẫ   ~^a
+ậ   ^a.
+ắ   'ua
+ằ   `ua
+ẳ   ?ua
+ẵ   ~ua
+ặ   ua.
+ⱥ   /a
+
+Æ   AE
+Ǣ   -AE
+Ǽ   'AE
+
+æ   ae
+ǣ   -ae
+ǽ   'ae
+
+#}}}
+
+#{{{ B
+
+Ɓ   B'
+Ƃ   -B
+Ḃ   .B
+Ḅ   B.
+Ḇ   B-
+Ƀ   /B
+
+ƀ   /b
+ƃ   -b
+ɓ   b'
+ḃ   .b
+ḅ   b.
+ḇ   b-
+
+#}}}
+
+#{{{ C
+
+Ç   ,C
+Ć   'C
+Ĉ   ^C
+Ċ   .C
+Č   vC
+Ƈ   C'
+Ḉ   ',C
+Ȼ   /C
+
+ç   ,c
+ć   'c
+ĉ   ^c
+ċ   .c
+č   vc
+ƈ   c'
+ḉ   ',c
+ȼ   /c
+
+#}}}
+
+#{{{ D
+
+Ď   vD
+Đ   /D
+Ɗ   D'
+Ƌ   -D
+Ḋ   .D
+Ḍ   D.
+Ḏ   D-
+Ḑ   ,D
+Ḓ   D^
+
+ď   vd
+đ   /d
+ɗ   d'
+ƌ   -d
+ḋ   .d
+ḍ   d.
+ḏ   d-
+ḑ   ,d
+ḓ   d^
+
+Ð   DH
+ð   dh
+Ǆ   DvZ
+ǅ   Dvz
+ǆ   dvz
+Ǳ   DZ
+ǲ   Dz
+ǳ   dz
+ȸ   db
+
+#}}}
+
+#{{{ E
+
+È   `E
+É   'E
+Ê   ^E
+Ë   "E
+Ē   -E
+Ĕ   uE
+Ė   .E
+Ę   ,E
+Ě   vE
+Ȅ   ``E
+Ȇ   UE
+Ȩ   ;E
+Ɇ   /E
+Ḕ   `-E
+Ḗ   '-E
+Ḙ   E^
+Ḛ   E~
+Ḝ   u,E
+Ẹ   E.
+Ẻ   ?E
+Ẽ   ~E
+Ế   '^E
+Ề   `^E
+Ể   ?^E
+Ễ   ~^E
+Ệ   ^E.
+
+è   `e
+é   'e
+ê   ^e
+ë   "e
+ē   -e
+ĕ   ue
+ė   .e
+ę   ,e
+ě   ve
+ȅ   ``e
+ȇ   Ue
+ȩ   ;e
+ɇ   /e
+ḕ   `-e
+ḗ   '-e
+ḙ   e^
+ḛ   e~
+ḝ   u,e
+ẹ   e.
+ẻ   ?e
+ẽ   ~e
+ế   '^e
+ề   `^e
+ể   ?^e
+ễ   ~^e
+ệ   ^e.
+
+Ə   EE
+ǝ   ee
+
+#}}}
+
+#{{{ F
+
+Ƒ   F'
+Ḟ   .F
+
+ƒ   f'
+ḟ   .f
+
+#}}}
+
+#{{{ G
+
+Ĝ   ^G
+Ğ   uG
+Ġ   .G
+Ģ   ,G
+Ɠ   G'
+Ǥ   /G
+Ǧ   vG
+Ǵ   'G
+Ḡ   -G
+
+ĝ   ^g
+ğ   ug
+ġ   .g
+ģ   ,g
+ɠ   g'
+ǥ   /g
+ǧ   vg
+ǵ   'g
+ḡ   -g
+
+#}}}
+
+#{{{ H
+
+Ĥ   ^H
+Ħ   /H
+Ȟ   vH
+Ḣ   .H
+Ḥ   H.
+Ḧ   "H
+Ḩ   ,H
+Ḫ   Hu
+
+ĥ   ^h
+ħ   /h
+ȟ   vh
+ḣ   .h
+ḥ   h.
+ḧ   "h
+ḩ   ,h
+ḫ   hu
+ẖ   h-
+
+ƕ   hv
+Ƕ   HV
+
+#}}}
+
+#{{{ I
+
+Ì   `I
+Í   'I
+Î   ^I
+Ï   "I
+Ĩ   ~I
+Ī   -I
+Ĭ   uI
+Į   ,I
+İ   .I
+Ɨ   /I
+Ǐ   vI
+Ȉ   ``I
+Ȋ   UI
+Ḭ   I~
+Ḯ   '"I
+Ỉ   ?I
+Ị   I.
+
+ì   `i
+í   'i
+î   ^i
+ï   "i
+ĩ   ~i
+ī   -i
+ĭ   ui
+į   ,i
+ı   .i
+ɨ   /i
+ǐ   vi
+ȉ   ``i
+ȋ   Ui
+ḭ   i~
+ḯ   '"i
+ỉ   ?i
+ị   i.
+
+Ĳ   IJ
+ĳ   ij
+
+#}}}
+
+#{{{ J
+
+Ĵ   ^J
+Ɉ   /J
+
+ĵ   ^j
+ǰ   vj
+ȷ   .j
+ɉ   /j
+
+#}}}
+
+#{{{ K
+
+Ķ   ,K
+Ƙ   K'
+Ǩ   vK
+Ḱ   'K
+Ḳ   K.
+Ḵ   K-
+
+ķ   ,k
+ƙ   k'
+ǩ   vk
+ḱ   'k
+ḳ   k.
+ḵ   k-
+
+ĸ   kk
+
+#}}}
+
+#{{{ L
+
+Ĺ   'L
+Ļ   ,L
+Ľ   vL
+Ŀ   .L
+Ł   /L
+Ḷ   L.
+Ḹ   -L.
+Ḻ   L-
+Ḽ   L^
+
+ĺ   'l
+ļ   ,l
+ľ   vl
+ŀ   .l
+ł   /l
+ḷ   l.
+ḹ   -l.
+ḻ   l-
+ḽ   l^
+
+Ǉ   LJ
+ǈ   Lj
+ǉ   lj
+
+#}}}
+
+#{{{ M
+
+Ḿ   'M
+Ṁ   .M
+Ṃ   M.
+
+ḿ   'm
+ṁ   .m
+ṃ   m.
+
+#}}}
+
+#{{{ N
+
+Ñ   ~N
+Ń   'N
+Ņ   ,N
+Ň   vN
+Ǹ   `N
+Ṅ   .N
+Ṇ   N.
+Ṉ   N-
+Ṋ   N^
+
+ñ   ~n
+ń   'n
+ņ   ,n
+ň   vn
+ǹ   `n
+ṅ   .n
+ṇ   n.
+ṉ   n-
+ṋ   n^
+
+ŉ   n'
+Ŋ   NG
+ŋ   ng
+Ǌ   NJ
+ǋ   Nj
+ǌ   nj
+
+#}}}
+
+#{{{ O
+
+Ò   `O
+Ó   'O
+Ô   ^O
+Õ   ~O
+Ö   "O
+Ø   /O
+Ō   -O
+Ŏ   uO
+Ő   ''O
+Ơ   O'
+Ǒ   vO
+Ǫ   ,O
+Ǭ   -,O
+Ǿ   '/O
+Ȍ   ``O
+Ȏ   UO
+Ȫ   -"O
+Ȭ   -~O
+Ȯ   .O
+Ȱ   -.O
+Ṍ   '~O
+Ṏ   "~O
+Ṑ   `-O
+Ṓ   '-O
+Ọ   O.
+Ỏ   ?O
+Ố   '^O
+Ồ   `^O
+Ổ   ?^O
+Ỗ   ~^O
+Ộ   ^O.
+Ớ   'O'
+Ờ   `O'
+Ở   ?O'
+Ỡ   ~O'
+Ợ   O'.
+
+ò   `o
+ó   'o
+ô   ^o
+õ   ~o
+ö   "o
+ø   /o
+ō   -o
+ŏ   uo
+ő   ''o
+ơ   o'
+ǒ   vo
+ǫ   ,o
+ǭ   -,o
+ǿ   '/o
+ȍ   ``o
+ȏ   Uo
+ȫ   -"o
+ȭ   -~o
+ȯ   .o
+ȱ   -.o
+ṍ   '~o
+ṏ   "~o
+ṑ   `-o
+ṓ   '-o
+ọ   o.
+ỏ   ?o
+ố   '^o
+ồ   `^o
+ổ   ?^o
+ỗ   ~^o
+ộ   ^o.
+ớ   'o'
+ờ   `o'
+ở   ?o'
+ỡ   ~o'
+ợ   o'.
+
+Œ   OE
+œ   oe
+Ƣ   OI
+ƣ   oi
+
+#}}}
+
+#{{{ P
+
+Ƥ   P'
+Ṕ   'P
+Ṗ   .P
+Ᵽ   /P
+
+ƥ   p'
+ṕ   'p
+ṗ   .p
+
+#}}}
+
+#{{{ Q
+
+Ɋ   Q'
+
+ɋ   q'
+
+ȹ   qp
+
+#}}}
+
+#{{{ R
+
+Ŕ   'R
+Ŗ   ,R
+Ř   vR
+Ȑ   ``R
+Ȓ   UR
+Ɍ   /R
+Ṙ   .R
+Ṛ   R.
+Ṝ   -R.
+Ṟ   R-
+
+ŕ   'r
+ŗ   ,r
+ř   vr
+ȑ   ``r
+ȓ   Ur
+ɍ   /r
+ṙ   .r
+ṛ   r.
+ṝ   -r.
+ṟ   r-
+
+#}}}
+
+#{{{ S
+
+Ś   'S
+Ŝ   ^S
+Ş   ,S
+Š   vS
+Ș   ;S
+Ṡ   .S
+Ṣ   S.
+Ṥ   .'S
+Ṧ   .vS
+Ṩ   .S.
+
+ś   's
+ŝ   ^s
+ş   ,s
+š   vs
+ș   ;s
+ṡ   .s
+ṣ   s.
+ṥ   '.s
+ṧ   .vs
+ṩ   .s.
+
+ß   ss
+ẞ   SS
+
+ſ   sl
+ẛ   .sl
+ẜ   /sl
+
+#}}}
+
+#{{{ T
+
+Ţ   ,T
+Ť   vT
+Ŧ   /T
+Ƭ   T'
+Ț   ;T
+Ṫ   .T
+Ṭ   T.
+Ṯ   T-
+Ṱ   T^
+
+ţ   ,t
+ť   vt
+ŧ   /t
+ƭ   t'
+ț   ;t
+ṫ   .t
+ṭ   t.
+ṯ   t-
+ṱ   t^
+ẗ   "t
+
+Þ   TH
+
+þ   th
+
+#}}}
+
+#{{{ U
+
+Ù   `U
+Ú   'U
+Û   ^U
+Ü   "U
+Ũ   ~U
+Ū   -U
+Ŭ   uU
+Ů   oU
+Ű   ''U
+Ų   ,U
+Ư   U'
+Ǔ   vU
+Ǖ   -"U
+Ǘ   '"U
+Ǚ   v"U
+Ǜ   `"U
+Ȕ   ``U
+Ȗ   UU
+Ʉ   /U
+Ṳ   U"
+Ṵ   U~
+Ṷ   U^
+Ṹ   '~U
+Ṻ   "-U
+Ụ   U.
+Ủ   ?U
+Ứ   'U'
+Ừ   `U'
+Ử   ?U'
+Ữ   ~U'
+Ự   U'.
+
+ù   `u
+ú   'u
+û   ^u
+ü   "u
+ũ   ~u
+ū   -u
+ŭ   uu
+ů   ou
+ű   ''u
+ų   ,u
+ư   u'
+ǔ   vu
+ǖ   -"u
+ǘ   '"u
+ǚ   v"u
+ǜ   `"u
+ȕ   ``u
+ȗ   Uu
+ʉ   /u
+ṳ   u"
+ṵ   u~
+ṷ   u^
+ṹ   '~u
+ṻ   "-u
+ụ   u.
+ủ   ?u
+ứ   'u'
+ừ   `u'
+ử   ?u'
+ữ   ~u'
+ự   u'.
+
+#}}}
+
+#{{{ V
+
+Ʋ   V'
+Ṽ   ~V
+Ṿ   V.
+
+ʋ   v'
+ṽ   ~v
+ṿ   v.
+
+#}}}
+
+#{{{ W
+
+Ŵ   ^W
+Ẁ   `W
+Ẃ   'W
+Ẅ   "W
+Ẇ   .W
+Ẉ   W.
+Ⱳ   W'
+
+ŵ   ^w
+ẁ   `w
+ẃ   'w
+ẅ   "w
+ẇ   .w
+ẉ   w.
+ẘ   ow
+ⱳ   w'
+
+#}}}
+
+#{{{ X
+
+Ẋ   .X
+Ẍ   "X
+
+ẋ   .x
+ẍ   "x
+
+#}}}
+
+#{{{ Y
+
+Ý   'Y
+Ÿ   "Y
+Ŷ   ^Y
+Ƴ   Y'
+Ȳ   -Y
+Ɏ   /Y
+Ẏ   .Y
+Ỳ   `Y
+Ỵ   Y.
+Ỷ   ?Y
+Ỹ   ~Y
+
+ý   'y
+ÿ   "y
+ŷ   ^y
+ƴ   y'
+ȳ   -y
+ɏ   /y
+ẏ   .y
+ẙ   oy
+ỳ   `y
+ỵ   y.
+ỷ   ?y
+ỹ   ~y
+
+#}}}
+
+#{{{ Z
+
+Ź   'Z
+Ż   .Z
+Ž   vZ
+Ƶ   /Z
+Ȥ   Z'
+Ẑ   ^Z
+Ẓ   Z.
+Ẕ   Z-
+
+ź   'z
+ż   .z
+ž   vz
+ƶ   /z
+ȥ   z'
+ẑ   ^z
+ẓ   z.
+ẕ   z-
+
+#}}}
+
+#}}}
+
+#{{{ Emoticons
+
+(╯°□°）╯︵\x20┻━┻           (tableflip)
+┬─┬ノ(\x20º\x20_\x20ºノ)    (tablerestore)
+ヽ༼ຈل͜ຈ༽ﾉ                    (riot)
+ಠ_ಠ                         (disapprove)
+ｷﾀ━━━━━━(ﾟ∀ﾟ)━━━━━━         (kita)      # including those '!!!!' at the end seems to crash Cocoa...
+¯\(°_o)/¯                   (dunnolol)
+¯\_(ツ)_/¯                  (shrug)
+(屮ﾟДﾟ)屮                   (yuno)
+щ(ﾟДﾟщ)                     (yuno<)
+(ﾟдﾟ≡ﾟдﾟ)                   (huh)
+(´・ω・`)                   :3
+(｀・ω・´)                  >:3
+
+#}}}
+

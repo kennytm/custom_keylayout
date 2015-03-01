@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
+<!--
+
+Custom keyboard generator with compose-key sequence
+Copyright (C) 2015  kennytm
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<keyboard group="{{group}}" id="{{id}}" name="{{name}}">
+    <layouts>
+        <layout first="0" last="17" modifiers="Modifiers" mapSet="ANSI"/>
+        <layout first="18" last="18" modifiers="Modifiers" mapSet="JIS"/>
+        <layout first="21" last="23" modifiers="Modifiers" mapSet="JIS"/>
+        <layout first="30" last="30" modifiers="Modifiers" mapSet="JIS"/>
+        <layout first="33" last="33" modifiers="Modifiers" mapSet="JIS"/>
+        <layout first="36" last="36" modifiers="Modifiers" mapSet="JIS"/>
+        <layout first="194" last="194" modifiers="Modifiers" mapSet="JIS"/>
+        <layout first="197" last="197" modifiers="Modifiers" mapSet="JIS"/>
+        <layout first="200" last="201" modifiers="Modifiers" mapSet="JIS"/>
+        <layout first="206" last="207" modifiers="Modifiers" mapSet="JIS"/>
+    </layouts>
+    <modifierMap id="Modifiers" defaultIndex="0">
+        <keyMapSelect mapIndex="0">
+            <modifier keys="command? anyControl? anyOption?"/>
+        </keyMapSelect>
+        <keyMapSelect mapIndex="1">
+            <modifier keys="anyShift command? anyControl? anyOption? caps?"/>
+        </keyMapSelect>
+        <keyMapSelect mapIndex="2">
+            <modifier keys="command? anyControl? anyOption? caps"/>
+        </keyMapSelect>
+    </modifierMap>
+    <keyMapSet id="ANSI">
+        <keyMap index="0">
+            <key code="0" action="61"/>
+            <key code="1" action="73"/>
+            <key code="2" action="64"/>
+            <key code="3" action="66"/>
+            <key code="4" action="68"/>
+            <key code="5" action="67"/>
+            <key code="6" action="7a"/>
+            <key code="7" action="78"/>
+            <key code="8" action="63"/>
+            <key code="9" action="76"/>
+            <key code="10" action="compose"/>  <!-- iso-§ -->
+            <key code="11" action="62"/>
+            <key code="12" action="71"/>
+            <key code="13" action="77"/>
+            <key code="14" action="65"/>
+            <key code="15" action="72"/>
+            <key code="16" action="79"/>
+            <key code="17" action="74"/>
+            <key code="18" action="31"/>
+            <key code="19" action="32"/>
+            <key code="20" action="33"/>
+            <key code="21" action="34"/>
+            <key code="22" action="36"/>
+            <key code="23" action="35"/>
+            <key code="24" action="3d"/>
+            <key code="25" action="39"/>
+            <key code="26" action="37"/>
+            <key code="27" action="2d"/>
+            <key code="28" action="38"/>
+            <key code="29" action="30"/>
+            <key code="30" action="5d"/>
+            <key code="31" action="6f"/>
+            <key code="32" action="75"/>
+            <key code="33" action="5b"/>
+            <key code="34" action="69"/>
+            <key code="35" action="70"/>
+            <key code="36" output="&#x000d;"/> <!-- return -->
+            <key code="37" action="6c"/>
+            <key code="38" action="6a"/>
+            <key code="39" action="27"/> <!-- ' -->
+            <key code="40" action="6b"/>
+            <key code="41" action="3b"/>
+            <key code="42" action="5c"/>
+            <key code="43" action="2c"/>
+            <key code="44" action="2f"/>
+            <key code="45" action="6e"/>
+            <key code="46" action="6d"/>
+            <key code="47" action="2e"/>
+            <key code="48" output="&#x0009;"/> <!-- tab -->
+            <key code="49" action="20"/>
+            <key code="50" action="60"/>
+            <key code="51" output="&#x0008;"/> <!-- backspace -->
+            <key code="52" output="&#x0003;"/>
+            <key code="53" output="&#x001b;"/> <!-- esc -->
+
+            <key code="64" output="&#x0010;"/>
+            <key code="65" output="."/>
+            <key code="66" output="&#x001d;"/>
+            <key code="67" output="*"/>
+            <key code="69" output="+"/>
+            <key code="70" output="&#x001c;"/>
+            <key code="71" output="&#x001b;"/> <!-- clear (numlock in pc) -->
+            <key code="72" output="&#x001f;"/>
+            <key code="75" output="/"/>
+            <key code="76" output="&#x0003;"/> <!-- enter -->
+            <key code="77" output="&#x001e;"/>
+            <key code="78" output="-"/>
+            <key code="79" output="&#x0010;"/>
+            <key code="80" output="&#x0010;"/>
+            <key code="81" output="="/>
+            <key code="82" output="0"/>
+            <key code="83" output="1"/>
+            <key code="84" output="2"/>
+            <key code="85" output="3"/>
+            <key code="86" output="4"/>
+            <key code="87" output="5"/>
+            <key code="88" output="6"/>
+            <key code="89" output="7"/>
+            <key code="91" output="8"/>
+            <key code="92" output="9"/>
+
+            <key code="96" output="&#x0010;"/> <!-- f5 -->
+            <key code="97" output="&#x0010;"/> <!-- f6 -->
+            <key code="98" output="&#x0010;"/> <!-- f7 -->
+            <key code="99" output="&#x0010;"/> <!-- f3 -->
+            <key code="100" output="&#x0010;"/> <!-- f8 -->
+            <key code="101" output="&#x0010;"/> <!-- f9 -->
+            <key code="102" output="&#x0010;"/>
+            <key code="103" output="&#x0010;"/> <!-- f11 -->
+            <key code="104" output="&#x0010;"/>
+            <key code="105" action="compose"/> <!-- f13 -->
+            <key code="106" output="&#x0010;"/> <!-- f16 -->
+            <key code="107" output="&#x0010;"/> <!-- f14 -->
+            <key code="108" output="&#x0010;"/>
+            <key code="109" output="&#x0010;"/> <!-- f10 -->
+            <key code="110" output="&#x0010;"/>
+            <key code="111" output="&#x0010;"/> <!-- f12 -->
+            <key code="112" output="&#x0010;"/>
+            <key code="113" output="&#x0010;"/> <!-- f15 -->
+            <key code="114" output="&#x0005;"/> <!-- help (insert in pc) -->
+            <key code="115" output="&#x0001;"/> <!-- home -->
+            <key code="116" output="&#x000b;"/> <!-- page up -->
+            <key code="117" output="&#x007f;"/> <!-- (forward) delete -->
+            <key code="118" output="&#x0010;"/> <!-- f4 -->
+            <key code="119" output="&#x0004;"/> <!-- end -->
+            <key code="120" output="&#x0010;"/> <!-- f2 -->
+            <key code="121" output="&#x000c;"/> <!-- page down -->
+            <key code="122" output="&#x0010;"/> <!-- f1 -->
+            <key code="123" output="&#x001c;"/> <!-- left -->
+            <key code="124" output="&#x001d;"/> <!-- right -->
+            <key code="125" output="&#x001f;"/> <!-- down -->
+            <key code="126" output="&#x001e;"/> <!-- up -->
+        </keyMap>
+        <keyMap index="1">
+            <key code="0" action="41"/>
+            <key code="1" action="53"/>
+            <key code="2" action="44"/>
+            <key code="3" action="46"/>
+            <key code="4" action="48"/>
+            <key code="5" action="47"/>
+            <key code="6" action="5a"/>
+            <key code="7" action="58"/>
+            <key code="8" action="43"/>
+            <key code="9" action="56"/>
+            <key code="10" action="compose"/>  <!-- iso-± -->
+            <key code="11" action="42"/>
+            <key code="12" action="51"/>
+            <key code="13" action="57"/>
+            <key code="14" action="45"/>
+            <key code="15" action="52"/>
+            <key code="16" action="59"/>
+            <key code="17" action="54"/>
+            <key code="18" action="21"/>
+            <key code="19" action="40"/>
+            <key code="20" action="23"/>
+            <key code="21" action="24"/>
+            <key code="22" action="5e"/>
+            <key code="23" action="25"/>
+            <key code="24" action="2b"/>
+            <key code="25" action="28"/>
+            <key code="26" action="26"/>
+            <key code="27" action="5f"/>
+            <key code="28" action="2a"/>
+            <key code="29" action="29"/>
+            <key code="30" action="7d"/>
+            <key code="31" action="4f"/>
+            <key code="32" action="55"/>
+            <key code="33" action="7b"/>
+            <key code="34" action="49"/>
+            <key code="35" action="50"/>
+            <key code="36" output="&#x000d;"/> <!-- return -->
+            <key code="37" action="4c"/>
+            <key code="38" action="4a"/>
+            <key code="39" action="22"/>
+            <key code="40" action="4b"/>
+            <key code="41" action="3a"/>
+            <key code="42" action="7c"/>
+            <key code="43" action="3c"/>
+            <key code="44" action="3f"/>
+            <key code="45" action="4e"/>
+            <key code="46" action="4d"/>
+            <key code="47" action="3e"/>
+            <key code="48" output="&#x0009;"/> <!-- tab -->
+            <key code="49" action="20"/>
+            <key code="50" action="7e"/>
+            <key code="51" output="&#x0008;"/> <!-- backspace -->
+            <key code="52" output="&#x0003;"/>
+            <key code="53" output="&#x001b;"/> <!-- esc -->
+
+            <key code="64" output="&#x0010;"/>
+            <key code="65" output="."/>
+            <key code="66" output="*"/>
+            <key code="67" output="*"/>
+            <key code="69" output="+"/>
+            <key code="70" output="+"/>
+            <key code="71" output="&#x001b;"/> <!-- clear (numlock in pc) -->
+            <key code="72" output="="/>
+            <key code="75" output="/"/>
+            <key code="76" output="&#x0003;"/> <!-- enter -->
+            <key code="77" output="/"/>
+            <key code="78" output="-"/>
+            <key code="79" output="&#x0010;"/>
+            <key code="80" output="&#x0010;"/>
+            <key code="81" output="="/>
+            <key code="82" output="0"/>
+            <key code="83" output="1"/>
+            <key code="84" output="2"/>
+            <key code="85" output="3"/>
+            <key code="86" output="4"/>
+            <key code="87" output="5"/>
+            <key code="88" output="6"/>
+            <key code="89" output="7"/>
+            <key code="91" output="8"/>
+            <key code="92" output="9"/>
+
+            <key code="96" output="&#x0010;"/> <!-- f5 -->
+            <key code="97" output="&#x0010;"/> <!-- f6 -->
+            <key code="98" output="&#x0010;"/> <!-- f7 -->
+            <key code="99" output="&#x0010;"/> <!-- f3 -->
+            <key code="100" output="&#x0010;"/> <!-- f8 -->
+            <key code="101" output="&#x0010;"/> <!-- f9 -->
+            <key code="102" output="&#x0010;"/>
+            <key code="103" output="&#x0010;"/> <!-- f11 -->
+            <key code="104" output="&#x0010;"/>
+            <key code="105" action="compose"/> <!-- f13 -->
+            <key code="106" output="&#x0010;"/> <!-- f16 -->
+            <key code="107" output="&#x0010;"/> <!-- f14 -->
+            <key code="108" output="&#x0010;"/>
+            <key code="109" output="&#x0010;"/> <!-- f10 -->
+            <key code="110" output="&#x0010;"/>
+            <key code="111" output="&#x0010;"/> <!-- f12 -->
+            <key code="112" output="&#x0010;"/>
+            <key code="113" output="&#x0010;"/> <!-- f15 -->
+            <key code="114" output="&#x0005;"/> <!-- help (insert in pc) -->
+            <key code="115" output="&#x0001;"/> <!-- home -->
+            <key code="116" output="&#x000b;"/> <!-- page up -->
+            <key code="117" output="&#x007f;"/> <!-- (forward) delete -->
+            <key code="118" output="&#x0010;"/> <!-- f4 -->
+            <key code="119" output="&#x0004;"/> <!-- end -->
+            <key code="120" output="&#x0010;"/> <!-- f2 -->
+            <key code="121" output="&#x000c;"/> <!-- page down -->
+            <key code="122" output="&#x0010;"/> <!-- f1 -->
+            <key code="123" output="&#x001c;"/> <!-- left -->
+            <key code="124" output="&#x001d;"/> <!-- right -->
+            <key code="125" output="&#x001f;"/> <!-- down -->
+            <key code="126" output="&#x001e;"/> <!-- up -->
+        </keyMap>
+        <keyMap index="2" baseMapSet="ANSI" baseIndex="0">
+            <key code="0" action="41"/>
+            <key code="1" action="53"/>
+            <key code="2" action="44"/>
+            <key code="3" action="46"/>
+            <key code="4" action="48"/>
+            <key code="5" action="47"/>
+            <key code="6" action="5a"/>
+            <key code="7" action="58"/>
+            <key code="8" action="43"/>
+            <key code="9" action="56"/>
+            <key code="11" action="42"/>
+            <key code="12" action="51"/>
+            <key code="13" action="57"/>
+            <key code="14" action="45"/>
+            <key code="15" action="52"/>
+            <key code="16" action="59"/>
+            <key code="17" action="54"/>
+            <key code="31" action="4f"/>
+            <key code="32" action="55"/>
+            <key code="34" action="49"/>
+            <key code="35" action="50"/>
+            <key code="37" action="4c"/>
+            <key code="38" action="4a"/>
+            <key code="40" action="4b"/>
+            <key code="45" action="4e"/>
+            <key code="46" action="4d"/>
+        </keyMap>
+    </keyMapSet>
+    <keyMapSet id="JIS">
+        <keyMap index="0" baseMapSet="ANSI" baseIndex="0">
+            <key code="24" output="^"/>
+            <key code="30" output="["/>
+            <key code="33" output="@"/>
+            <key code="39" output=":"/>
+            <key code="42" output="]"/>
+            <key code="93" output="¥"/>
+            <key code="94" output="_"/>
+            <key code="95" output=","/>
+            <key code="102" output=" "/>
+            <key code="104" output=" "/>
+        </keyMap>
+        <keyMap index="1" baseMapSet="ANSI" baseIndex="1">
+            <key code="19" output="&#x0022;"/>
+            <key code="22" output="&#x0026;"/>
+            <key code="24" output="~"/>
+            <key code="25" output=")"/>
+            <key code="26" output="‘"/>
+            <key code="27" output="="/>
+            <key code="28" output="("/>
+            <key code="29" output="0"/>
+            <key code="30" output="{"/>
+            <key code="33" output="`"/>
+            <key code="39" output="*"/>
+            <key code="41" output="+"/>
+            <key code="42" output="}"/>
+            <key code="93" output="|"/>
+            <key code="94" output="_"/>
+            <key code="95" output=","/>
+            <key code="102" output=" "/>
+            <key code="104" output=" "/>
+        </keyMap>
+        <keyMap index="2" baseMapSet="ANSI" baseIndex="2">
+            <key code="24" output="^"/>
+            <key code="30" output="["/>
+            <key code="33" output="@"/>
+            <key code="39" output=":"/>
+            <key code="42" output="]"/>
+            <key code="93" output="¥"/>
+            <key code="94" output="_"/>
+            <key code="95" output=","/>
+            <key code="102" output=" "/>
+            <key code="104" output=" "/>
+        </keyMap>
+    </keyMapSet>
+    <actions>
+        <action id="compose">
+            <when state="none" next="c-"/>
+        </action>{{#each actions}}
+        <action id="{{fsm_format action @index}}">
+            <when state="none" output="{{fsm_format key @index}}"/>{{#each this}}{{#if this}}
+            <when state="{{@key}}" output="{{escape this}}"/>{{else}}
+            <when state="{{@key}}" next="{{@key}}{{fsm_format action @../index}}"/>{{/if}}{{/each}}
+        </action>{{/each}}
+    </actions>
+    <terminators>
+        <when state="c-" output="⎄"/>{{#each intermediates}}
+        <when state="{{@key}}" output="{{escape this}}"/>{{/each}}{{#each actions[0]}}{{#if this}}
+        <when state="{{@key}}" output="{{escape this}}"/>{{/if}}{{/each}}
+    </terminators>
+</keyboard>
+

@@ -1,0 +1,13 @@
+# Sample input file to check that things are working.
+
+á   'a
+à   `a
+â   ^a
+ä   "a
+å   oa
+ã   ~a
+æ   ae
+–   --
+—   ---
+（╯°□°）╯︵\x20┻━┻  (tableflip)
+

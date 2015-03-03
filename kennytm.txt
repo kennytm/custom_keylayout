@@ -224,877 +224,489 @@
 
 #}}}
 
+#{{{ Japanese (Hiragana & Katakana)
+
+# Using Hepburn romanization.
+
 #{{{ Hiragana
 
-# import unicodedata
-# for code in range(0x3041, 0x3096+1):
-#     c = chr(code)
-#     name = unicodedata.name(c)
-#     name = name[16:].replace('SMALL ', '_')
-#     print('{}   j{}'.format(c, name))
-#     print('{}ん j{}N'.format(c, name))
-#     print('{}っ j{}T'.format(c, name))
-#     if name.endswith('I'):
-#         print('{}ゃ j{}YA'.format(c, name[:-1]))
-#         print('{}ゅ j{}YU'.format(c, name[:-1]))
-#         print('{}ょ j{}YO'.format(c, name[:-1]))
-#         print('{}ゃん   j{}YAN'.format(c, name[:-1]))
-#         print('{}ゅん   j{}YUN'.format(c, name[:-1]))
-#         print('{}ょん   j{}YON'.format(c, name[:-1]))
-#         print('{}ゃっ   j{}YAT'.format(c, name[:-1]))
-#         print('{}ゅっ   j{}YUT'.format(c, name[:-1]))
-#         print('{}ょっ   j{}YOT'.format(c, name[:-1]))
+あ      jA -> j
+い      jI -> j
+う      jU -> j
+え      jE -> j
+お      jO -> j
 
-ぁ   j_A
-あ   jA
-あん jAN
-あっ jAT
-ぃ   j_I
-い   jI
-いん jIN
-いっ jIT
-ぅ   j_U
-う   jU
-うん jUN
-うっ jUT
-ぇ   j_E
-え   jE
-えん jEN
-えっ jET
-ぉ   j_O
-お   jO
-おん jON
-おっ jOT
-か   jKA
-かん jKAN
-かっ jKAT
-が   jGA
-がん jGAN
-がっ jGAT
-き   jKI
-きん jKIN
-きっ jKIT
-きゃ jKYA
-きゅ jKYU
-きょ jKYO
-きゃん   jKYAN
-きゅん   jKYUN
-きょん   jKYON
-きゃっ   jKYAT
-きゅっ   jKYUT
-きょっ   jKYOT
-ぎ   jGI
-ぎん jGIN
-ぎっ jGIT
-ぎゃ jGYA
-ぎゅ jGYU
-ぎょ jGYO
-ぎゃん   jGYAN
-ぎゅん   jGYUN
-ぎょん   jGYON
-ぎゃっ   jGYAT
-ぎゅっ   jGYUT
-ぎょっ   jGYOT
-く   jKU
-くん jKUN
-くっ jKUT
-ぐ   jGU
-ぐん jGUN
-ぐっ jGUT
-け   jKE
-けん jKEN
-けっ jKET
-げ   jGE
-げん jGEN
-げっ jGET
-こ   jKO
-こん jKON
-こっ jKOT
-ご   jGO
-ごん jGON
-ごっ jGOT
-さ   jSA
-さん jSAN
-さっ jSAT
-ざ   jZA
-ざん jZAN
-ざっ jZAT
-し   jSHI
-しん jSHIN
-しっ jSHIT
-しゃ jSHA
-しゅ jSHU
-しょ jSHO
-しゃん   jSHAN
-しゅん   jSHUN
-しょん   jSHON
-しゃっ   jSHAT
-しゅっ   jSHUT
-しょっ   jSHOT
-じ   jJI
-じん jJIN
-じっ jJIT
-じゃ jJA
-じゅ jJU
-じょ jJO
-じゃん   jJAN
-じゅん   jJUN
-じょん   jJON
-じゃっ   jJAT
-じゅっ   jJUT
-じょっ   jJOT
-す   jSU
-すん jSUN
-すっ jSUT
-ず   jZU
-ずん jZUN
-ずっ jZUT
-せ   jSE
-せん jSEN
-せっ jSET
-ぜ   jZE
-ぜん jZEN
-ぜっ jZET
-そ   jSO
-そん jSON
-そっ jSOT
-ぞ   jZO
-ぞん jZON
-ぞっ jZOT
-た   jTA
-たん jTAN
-たっ jTAT
-だ   jDA
-だん jDAN
-だっ jDAT
-ち   jCHI
-ちん jCHIN
-ちっ jCHIT
-ちゃ jCHA
-ちゅ jCHU
-ちょ jCHO
-ちゃん   jCHAN
-ちゅん   jCHUN
-ちょん   jCHON
-ちゃっ   jCHAT
-ちゅっ   jCHUT
-ちょっ   jCHOT
-ぢ   jCHI"
-っ   j_TSU
-つ   jTSU
-つん jTSUN
-つっ jTSUT
-づ   jTSU"
-て   jTE
-てん jTEN
-てっ jTET
-で   jDE
-でん jDEN
-でっ jDET
-と   jTO
-とん jTON
-とっ jTOT
-ど   jDO
-どん jDON
-どっ jDOT
-な   jNA
-なん jNAN
-なっ jNAT
-に   jNI
-にん jNIN
-にっ jNIT
-にゃ jNYA
-にゅ jNYU
-にょ jNYO
-にゃん   jNYAN
-にゅん   jNYUN
-にょん   jNYON
-にゃっ   jNYAT
-にゅっ   jNYUT
-にょっ   jNYOT
-ぬ   jNU
-ぬん jNUN
-ぬっ jNUT
-ね   jNE
-ねん jNEN
-ねっ jNET
-の   jNO
-のん jNON
-のっ jNOT
-は   jHA
-はん jHAN
-はっ jHAT
-ば   jBA
-ばん jBAN
-ばっ jBAT
-ぱ   jPA
-ぱん jPAN
-ぱっ jPAT
-ひ   jHI
-ひん jHIN
-ひっ jHIT
-ひゃ jHYA
-ひゅ jHYU
-ひょ jHYO
-ひゃん   jHYAN
-ひゅん   jHYUN
-ひょん   jHYON
-ひゃっ   jHYAT
-ひゅっ   jHYUT
-ひょっ   jHYOT
-び   jBI
-びん jBIN
-びっ jBIT
-びゃ jBYA
-びゅ jBYU
-びょ jBYO
-びゃん   jBYAN
-びゅん   jBYUN
-びょん   jBYON
-びゃっ   jBYAT
-びゅっ   jBYUT
-びょっ   jBYOT
-ぴ   jPI
-ぴん jPIN
-ぴっ jPIT
-ぴゃ jPYA
-ぴゅ jPYU
-ぴょ jPYO
-ぴゃん   jPYAN
-ぴゅん   jPYUN
-ぴょん   jPYON
-ぴゃっ   jPYAT
-ぴゅっ   jPYUT
-ぴょっ   jPYOT
-ふ   jFU
-ふん jFUN
-ふっ jFUT
-ぶ   jBU
-ぶん jBUN
-ぶっ jBUT
-ぷ   jPU
-ぷん jPUN
-ぷっ jPUT
-へ   jHE
-へん jHEN
-へっ jHET
-べ   jBE
-べん jBEN
-べっ jBET
-ぺ   jPE
-ぺん jPEN
-ぺっ jPET
-ほ   jHO
-ほん jHON
-ほっ jHOT
-ぼ   jBO
-ぼん jBON
-ぼっ jBOT
-ぽ   jPO
-ぽん jPON
-ぽっ jPOT
-ま   jMA
-まん jMAN
-まっ jMAT
-み   jMI
-みん jMIN
-みっ jMIT
-みゃ jMYA
-みゅ jMYU
-みょ jMYO
-みゃん   jMYAN
-みゅん   jMYUN
-みょん   jMYON
-みゃっ   jMYAT
-みゅっ   jMYUT
-みょっ   jMYOT
-む   jMU
-むん jMUN
-むっ jMUT
-め   jME
-めん jMEN
-めっ jMET
-も   jMO
-もん jMON
-もっ jMOT
-ゃ   j_YA
-や   jYA
-やん jYAN
-やっ jYAT
-ゅ   j_YU
-ゆ   jYU
-ゆん jYUN
-ゆっ jYUT
-ょ   j_YO
-よ   jYO
-よん jYON
-よっ jYOT
-ら   jRA
-らん jRAN
-らっ jRAT
-り   jRI
-りん jRIN
-りっ jRIT
-りゃ jRYA
-りゅ jRYU
-りょ jRYO
-りゃん   jRYAN
-りゅん   jRYUN
-りょん   jRYON
-りゃっ   jRYAT
-りゅっ   jRYUT
-りょっ   jRYOT
-る   jRU
-るん jRUN
-るっ jRUT
-れ   jRE
-れん jREN
-れっ jRET
-ろ   jRO
-ろん jRON
-ろっ jROT
-ゎ   j_WA
-わ   jWA
-わん jWAN
-わっ jWAT
-ゐ   jWI
-ゑ   jWE
-を   jWO
-をん jWON
-をっ jWOT
-ん   jN
-ゔ   jVU
-ゕ   j_KA
-ゖ   j_KE
+ば      jBA -> j
+び      jBI -> j
+ぶ      jBU -> j
+べ      jBE -> j
+ぼ      jBO -> j
+っ      jBB -> jB
+び      jBY -> j_Y
+
+ちゃ    jCHA -> j
+ち      jCHI -> j
+ちゅ    jCHU -> j
+ちょ    jCHO -> j
+
+だ      jDA -> j
+で      jDE -> j
+ど      jDO -> j
+っ      jDD -> jD
+
+ふ      jFU -> j
+っ      jFF -> jF
+
+が      jGA -> j
+ぎ      jGI -> j
+ぐ      jGU -> j
+げ      jGE -> j
+ご      jGO -> j
+っ      jGG -> jG
+ぎ      jGY -> j_Y
+
+は      jHA -> j
+ひ      jHI -> j
+へ      jHE -> j
+ほ      jHO -> j
+っ      jHH -> jH
+ひ      jHY -> j_Y
+
+じゃ    jJA -> j
+じ      jJI -> j
+じゅ    jJU -> j
+じょ    jJO -> j
+っ      jJJ -> jJ
+
+か      jKA -> j
+き      jKI -> j
+く      jKU -> j
+け      jKE -> j
+こ      jKO -> j
+っ      jKK -> jK
+き      jKY -> j_Y
+
+ま      jMA -> j
+み      jMI -> j
+む      jMU -> j
+め      jME -> j
+も      jMO -> j
+ん      jMB -> jB
+ん      jMM -> jM
+ん      jMP -> jP
+
+な      jNA -> j
+に      jNI -> j
+ぬ      jNU -> j
+ね      jNE -> j
+の      jNO -> j
+ん      jN' -> j
+ん      jNB -> jB
+ん      jNC -> jC
+ん      jND -> jD
+ん      jNF -> jF
+ん      jNG -> jG
+ん      jNH -> jH
+ん      jNJ -> jJ
+ん      jNK -> jK
+ん      jNM -> jM
+ん      jNN -> jN
+ん      jNP -> jP
+ん      jNR -> jR
+ん      jNS -> jS
+ん      jNT -> jT
+ん      jNV -> jV
+ん      jNW -> jW
+ん      jNZ -> jZ
+
+ぱ      jPA -> j
+ぴ      jPI -> j
+ぷ      jPU -> j
+ぺ      jPE -> j
+ぽ      jPO -> j
+っ      jPP -> jP
+ぴ      jPY -> j_Y
+
+ら      jRA -> j
+り      jRI -> j
+る      jRU -> j
+れ      jRE -> j
+ろ      jRO -> j
+っ      jRR -> jR
+り      jRY -> j_Y
+
+さ      jSA -> j
+す      jSU -> j
+せ      jSE -> j
+そ      jSO -> j
+っ      jSS -> jS
+しゃ    jSHA -> j
+し      jSHI -> j
+しゅ    jSHU -> j
+しょ    jSHO -> j
+
+た      jTA -> j
+て      jTE -> j
+と      jTO -> j
+っ      jTT -> jT
+っ      jTC -> jC
+つ      jTSU -> j
+
+ゔ      jVU -> j
+っ      jVV -> jV
+
+わ      jWA -> j
+ゐ      jWI -> j
+ゑ      jWE -> j
+を      jWO -> j
+っ      jWW -> jW
+
+や      jYA -> j
+ゆ      jYU -> j
+よ      jYO -> j
+っ      jYY -> jY
+
+ざ      jZA -> j
+ず      jZU -> j
+ぜ      jZE -> j
+ぞ      jZO -> j
+っ      jZZ -> jZ
+
+ぁ      j_A -> j
+ぃ      j_I -> j
+ぅ      j_U -> j
+ぇ      j_E -> j
+ぉ      j_O -> j
+ゕ      j_KA -> j
+ゖ      j_KE -> j
+っ      j_TSU -> j
+ゃ      j_YA -> j
+ゅ      j_YU -> j
+ょ      j_YO -> j
+ゎ      j_WA -> j
 
 #}}}
 
 #{{{ Katakana
 
-# import unicodedata
-# for code in range(0x30a1, 0x30f6+1):
-#     c = chr(code)
-#     name = unicodedata.name(c)
-#     name = name[16:].replace('SMALL ', '_').lower()
-#     print('{}   j{}'.format(c, name))
-#     print('{}ン j{}n'.format(c, name))
-#     print('{}ッ j{}t'.format(c, name))
-#     if name.endswith('i'):
-#         print('{}ャ j{}ya'.format(c, name[:-1]))
-#         print('{}ュ j{}yu'.format(c, name[:-1]))
-#         print('{}ョ j{}yo'.format(c, name[:-1]))
-#         print('{}ャン   j{}yan'.format(c, name[:-1]))
-#         print('{}ュン   j{}yun'.format(c, name[:-1]))
-#         print('{}ョン   j{}yon'.format(c, name[:-1]))
-#         print('{}ャッ   j{}yat'.format(c, name[:-1]))
-#         print('{}ュッ   j{}yut'.format(c, name[:-1]))
-#         print('{}ョッ   j{}yot'.format(c, name[:-1]))
+ア      ja -> j
+イ      ji -> j
+ウ      ju -> j
+エ      je -> j
+オ      jo -> j
 
-ァ   j_a
-ア   ja
-アン jan
-アッ jat
-ィ   j_i
-イ   ji
-イン jin
-イッ jit
-ゥ   j_u
-ウ   ju
-ウン jun
-ウッ jut
-ェ   j_e
-エ   je
-エン jen
-エッ jet
-ォ   j_o
-オ   jo
-オン jon
-オッ jot
-カ   jka
-カン jkan
-カッ jkat
-ガ   jga
-ガン jgan
-ガッ jgat
-キ   jki
-キン jkin
-キッ jkit
-キャ jkya
-キュ jkyu
-キョ jkyo
-キャン   jkyan
-キュン   jkyun
-キョン   jkyon
-キャッ   jkyat
-キュッ   jkyut
-キョッ   jkyot
-ギ   jgi
-ギン jgin
-ギッ jgit
-ギャ jgya
-ギュ jgyu
-ギョ jgyo
-ギャン   jgyan
-ギュン   jgyun
-ギョン   jgyon
-ギャッ   jgyat
-ギュッ   jgyut
-ギョッ   jgyot
-ク   jku
-クン jkun
-クッ jkut
-グ   jgu
-グン jgun
-グッ jgut
-ケ   jke
-ケン jken
-ケッ jket
-ゲ   jge
-ゲン jgen
-ゲッ jget
-コ   jko
-コン jkon
-コッ jkot
-ゴ   jgo
-ゴン jgon
-ゴッ jgot
-サ   jsa
-サン jsan
-サッ jsat
-ザ   jza
-ザン jzan
-ザッ jzat
-シ   jshi
-シン jshin
-シッ jshit
-シャ jsha
-シュ jshu
-ショ jsho
-シャン   jshan
-シュン   jshun
-ション   jshon
-シャッ   jshat
-シュッ   jshut
-ショッ   jshot
-ジ   jji
-ジン jjin
-ジッ jjit
-ジャ jja
-ジュ jju
-ジョ jjo
-ジャン   jjan
-ジュン   jjun
-ジョン   jjon
-ジャッ   jjat
-ジュッ   jjut
-ジョッ   jjot
-ス   jsu
-スン jsun
-スッ jsut
-ズ   jzu
-ズン jzun
-ズッ jzut
-セ   jse
-セン jsen
-セッ jset
-ゼ   jze
-ゼン jzen
-ゼッ jzet
-ソ   jso
-ソン json
-ソッ jsot
-ゾ   jzo
-ゾン jzon
-ゾッ jzot
-タ   jta
-タン jtan
-タッ jtat
-ダ   jda
-ダン jdan
-ダッ jdat
-チ   jchi
-チン jchin
-チッ jchit
-チャ jcha
-チュ jchu
-チョ jcho
-チャン   jchan
-チュン   jchun
-チョン   jchon
-チャッ   jchat
-チュッ   jchut
-チョッ   jchot
-ヂ   jchi"
-ッ   j_tsu
-ツ   jtsu
-ツン jtsun
-ツッ jtsut
-ヅ   jtsu"
-テ   jte
-テン jten
-テッ jtet
-デ   jde
-デン jden
-デッ jdet
-ト   jto
-トン jton
-トッ jtot
-ド   jdo
-ドン jdon
-ドッ jdot
-ナ   jna
-ナン jnan
-ナッ jnat
-ニ   jni
-ニン jnin
-ニッ jnit
-ニャ jnya
-ニュ jnyu
-ニョ jnyo
-ニャン   jnyan
-ニュン   jnyun
-ニョン   jnyon
-ニャッ   jnyat
-ニュッ   jnyut
-ニョッ   jnyot
-ヌ   jnu
-ヌン jnun
-ヌッ jnut
-ネ   jne
-ネン jnen
-ネッ jnet
-ノ   jno
-ノン jnon
-ノッ jnot
-ハ   jha
-ハン jhan
-ハッ jhat
-バ   jba
-バン jban
-バッ jbat
-パ   jpa
-パン jpan
-パッ jpat
-ヒ   jhi
-ヒン jhin
-ヒッ jhit
-ヒャ jhya
-ヒュ jhyu
-ヒョ jhyo
-ヒャン   jhyan
-ヒュン   jhyun
-ヒョン   jhyon
-ヒャッ   jhyat
-ヒュッ   jhyut
-ヒョッ   jhyot
-ビ   jbi
-ビン jbin
-ビッ jbit
-ビャ jbya
-ビュ jbyu
-ビョ jbyo
-ビャン   jbyan
-ビュン   jbyun
-ビョン   jbyon
-ビャッ   jbyat
-ビュッ   jbyut
-ビョッ   jbyot
-ピ   jpi
-ピン jpin
-ピッ jpit
-ピャ jpya
-ピュ jpyu
-ピョ jpyo
-ピャン   jpyan
-ピュン   jpyun
-ピョン   jpyon
-ピャッ   jpyat
-ピュッ   jpyut
-ピョッ   jpyot
-フ   jfu
-フン jfun
-フッ jfut
-ブ   jbu
-ブン jbun
-ブッ jbut
-プ   jpu
-プン jpun
-プッ jput
-ヘ   jhe
-ヘン jhen
-ヘッ jhet
-ベ   jbe
-ベン jben
-ベッ jbet
-ペ   jpe
-ペン jpen
-ペッ jpet
-ホ   jho
-ホン jhon
-ホッ jhot
-ボ   jbo
-ボン jbon
-ボッ jbot
-ポ   jpo
-ポン jpon
-ポッ jpot
-マ   jma
-マン jman
-マッ jmat
-ミ   jmi
-ミン jmin
-ミッ jmit
-ミャ jmya
-ミュ jmyu
-ミョ jmyo
-ミャン   jmyan
-ミュン   jmyun
-ミョン   jmyon
-ミャッ   jmyat
-ミュッ   jmyut
-ミョッ   jmyot
-ム   jmu
-ムン jmun
-ムッ jmut
-メ   jme
-メン jmen
-メッ jmet
-モ   jmo
-モン jmon
-モッ jmot
-ャ   j_ya
-ヤ   jya
-ヤン jyan
-ヤッ jyat
-ュ   j_yu
-ユ   jyu
-ユン jyun
-ユッ jyut
-ョ   j_yo
-ヨ   jyo
-ヨン jyon
-ヨッ jyot
-ラ   jra
-ラン jran
-ラッ jrat
-リ   jri
-リン jrin
-リッ jrit
-リャ jrya
-リュ jryu
-リョ jryo
-リャン   jryan
-リュン   jryun
-リョン   jryon
-リャッ   jryat
-リュッ   jryut
-リョッ   jryot
-ル   jru
-ルン jrun
-ルッ jrut
-レ   jre
-レン jren
-レッ jret
-ロ   jro
-ロン jron
-ロッ jrot
-ヮ   j_wa
-ワ   jwa
-ワン jwan
-ワッ jwat
-ヰ   jwi
-ヱ   jwe
-ヲ   jwo
-ン   jn
-ヴ   jvu
-ヴン jvun
-ヴッ jvut
-ヵ   j_ka
-ヶ   j_ke
-ヷ  jwa"
-ヸ  jwi"
-ヹ  jwe"
-ヺ  jwo"
-ー  j-
-・  j.
+バ      jba -> j
+ビ      jbi -> j
+ブ      jbu -> j
+ベ      jbe -> j
+ボ      jbo -> j
+ッ      jbb -> jb
+ビ      jby -> j_y
 
-# Extended katakanas
+チャ    jcha -> j
+チ      jchi -> j
+チュ    jchu -> j
+チェ    jche -> j
+チョ    jcho -> j
 
-キェ    jkye
-クヮ    jkwa
-クィ    jkwi
-クェ    jkwe
-クォ    jkwo
-ギェ    jgye
-グヮ    jgwa
-グィ    jgwi
-グェ    jgwe
-グォ    jgwo
-スィ    jsi
-スィン  jsin
-スィッ  jsit
-シェ    jshe
-シェン  jshen
-シェッ  jshet
-ズィ    jzi
-ズィン  jzin
-ズィッ  jzit
-ジェ    jje
-ジェン  jjen
-ジェッ  jjet
-ティ    jti
-ティン  jtin
-ティッ  jtit
-トゥ    jtu
-トゥン  jtun
-トゥッ  jtut
-テュ    jtyu
-チェ    jche
-チェン  jchen
-チェッ  jchet
-ツァ    jtsa
-ツィ    jtsi
-ツェ    jtse
-ツォ    jtso
-ディ    jdi
-ディン  jdin
-ディッ  jdit
-ドゥ    jdu
-ドゥン  jdun
-ドゥッ  jdut
-デュ    jdyu
-ニェ    jnye
-ホゥ    jhu
-ホゥン  jhun
-ホゥッ  jhut
-ヒェ    jhye
-ファ    jfa
-ファン  jfan
-ファッ  jfat
-フィ    jfi
-フィン  jfin
-フィッ  jfit
-フェ    jfe
-フェン  jfen
-フェッ  jfet
-フォ    jfo
-フォン  jfon
-フォッ  jfot
-フャ    jfya
-フュ    jfyu
-フィェ  jfye
-フョ    jfyo
-ビェ    jbye
-ピェ    jpye
-ミェ    jmye
-イィ    jyi
-イィン  jyin
-イィッ  jyit
-イェ    jye
-イェン  jyen
-イェッ  jyet
-ウィ    jwi2
-ウゥ    jwu
-ウェ    jwe2
-ウォ    jwo2
-ウュ    jwyu
-ヴァ    jva
-ヴァン  jvan
-ヴァッ  jvat
-ヴィ    jvi
-ヴィン  jvin
-ヴィッ  jvit
-ヴェ    jve
-ヴェン  jven
-ヴェッ  jvet
-ヴォ    jvo
-ヴォン  jvon
-ヴォッ  jvot
-ヴャ    jvya
-ヴュ    jvyu
-ヴィェ  jvye
-ヴョ    jvyo
+ダ      jda -> j
+ディ    jdi -> j
+ドゥ    jdu -> j
+デ      jde -> j
+ド      jdo -> j
+ッ      jdd -> jd
+デ      jdy -> j_y
 
-ㇰ  j_ku
-ㇱ  j_shi
-ㇲ  j_su
-ㇳ  j_to
-ㇴ  j_nu
-ㇵ  j_ha
-ㇶ  j_hi
-ㇷ  j_fu
-ㇸ  j_he
-ㇹ  j_ho
-ㇺ  j_mu
-ㇻ  j_ra
-ㇼ  j_ri
-ㇽ  j_ru
-ㇾ  j_re
-ㇿ  j_ro
+ファ    jfa -> j
+フィ    jfi -> j
+フ      jfu -> j
+フェ    jfe -> j
+フォ    jfo -> j
+ッ      jff -> jf
+フ      jfy -> j_y
+
+ガ      jga -> j
+ギ      jgi -> j
+グ      jgu -> j
+ゲ      jge -> j
+ゴ      jgo -> j
+ッ      jgg -> jg
+ギ      jgy -> j_y
+グ      jgw -> j_
+
+ハ      jha -> j
+ヒ      jhi -> j
+ヘ      jhe -> j
+ホ      jho -> j
+ッ      jhh -> jh
+ヒ      jhy -> j_y
+
+ジャ    jja -> j
+ジ      jji -> j
+ジュ    jju -> j
+ジェ    jje -> j
+ジョ    jjo -> j
+ッ      jjj -> jj
+
+カ      jka -> j
+キ      jki -> j
+ク      jku -> j
+ケ      jke -> j
+コ      jko -> j
+ッ      jkk -> jk
+キ      jky -> j_y
+ク      jkw -> j_
+
+マ      jma -> j
+ミ      jmi -> j
+ム      jmu -> j
+メ      jme -> j
+モ      jmo -> j
+ン      jmb -> jb
+ン      jmm -> jm
+ン      jmp -> jp
+
+ナ      jna -> j
+ニ      jni -> j
+ヌ      jnu -> j
+ネ      jne -> j
+ノ      jno -> j
+ン      jn' -> j
+ン      jnb -> jb
+ン      jnc -> jc
+ン      jnd -> jd
+ン      jnf -> jf
+ン      jng -> jg
+ン      jnh -> jh
+ン      jnj -> jj
+ン      jnk -> jk
+ン      jnm -> jm
+ン      jnn -> jn
+ン      jnp -> jp
+ン      jnr -> jr
+ン      jns -> js
+ン      jnt -> jt
+ン      jnv -> jv
+ン      jnw -> jw
+ン      jnz -> jz
+
+パ      jpa -> j
+ピ      jpi -> j
+プ      jpu -> j
+ペ      jpe -> j
+ポ      jpo -> j
+ッ      jpp -> jp
+ピ      jpy -> j_y
+
+ラ      jra -> j
+リ      jri -> j
+ル      jru -> j
+レ      jre -> j
+ロ      jro -> j
+ッ      jrr -> jr
+リ      jry -> j_y
+
+サ      jsa -> j
+ス      jsu -> j
+セ      jse -> j
+ソ      jso -> j
+ッ      jss -> js
+シャ    jsha -> j
+シ      jshi -> j
+シュ    jshu -> j
+シェ    jshe -> j
+ショ    jsho -> j
+
+タ      jta -> j
+ティ    jti -> j
+トゥ    jtu -> j
+テ      jte -> j
+ト      jto -> j
+ッ      jtt -> jt
+ッ      jtc -> jc
+ツァ    jtsa -> j
+ツィ    jtsi -> j
+ツ      jtsu -> j
+ツェ    jtse -> j
+ツォ    jtso -> j
+テ      jty -> j_y
+
+ヴァ    jva -> j
+ヴィ    jvi -> j
+ヴ      jvu -> j
+ヴェ    jve -> j
+ヴォ    jvo -> j
+ッ      jvv -> jv
+
+ワ      jwa -> j
+ヰ      jwi -> j
+ヱ      jwe -> j
+ヲ      jwo -> j
+ッ      jww -> jw
+
+ヤ      jya -> j
+ユ      jyu -> j
+イェ    jye -> j
+ヨ      jyo -> j
+ッ      jyy -> jy
+
+ザ      jza -> j
+ズ      jzu -> j
+ゼ      jze -> j
+ゾ      jzo -> j
+ッ      jzz -> jz
+
+ァ      j_a -> j
+ィ      j_i -> j
+ゥ      j_u -> j
+ェ      j_e -> j
+ォ      j_o -> j
+ヵ      j_ka -> j
+ヶ      j_ke -> j
+ッ      j_tsu -> j
+ャ      j_ya -> j
+ュ      j_yu -> j
+ョ      j_yo -> j
+ヮ      j_wa -> j
+ㇰ      j_ku -> j
+ㇱ      j_shi -> j
+ㇲ      j_su -> j
+ㇳ      j_to -> j
+ㇴ      j_nu -> j
+ㇵ      j_ha -> j
+ㇶ      j_hi -> j
+ㇷ      j_fu -> j
+ㇸ      j_he -> j
+ㇹ      j_ho -> j
+ㇺ      j_mu -> j
+ㇻ      j_ra -> j
+ㇼ      j_ri -> j
+ㇽ      j_ru -> j
+ㇾ      j_re -> j
+ㇿ      j_ro -> j
+
+・      j. -> j
+ー      j- -> j
+
+#}}}
 
 #}}}
 
 #{{{ Zhuyin (Bopomofo)
 
-# ü maps to v here.
+# Pinyin -> Zhuyin.
 
-ㄅ  zb
-ㄆ  zp
-ㄇ  zm
-ㄈ  zf
-ㄉ  zd
-ㄊ  zt
-ㄋ  zn
-ㄌ  zl
-ㄍ  zg
-ㄎ  zk
-ㄏ  zh
-ㄐ  zj
-ㄑ  zq
-ㄒ  zx
-ㄓ  zzh
-ㄔ  zch
-ㄕ  zsh
-ㄖ  zr
-ㄗ  zz
-ㄘ  zc
-ㄙ  zs
-ㄚ  za
-ㄛ  zo
-ㄜ  ze
-ㄝ  z^e
-ㄞ  zai
-ㄟ  zei
-ㄠ  zao
-ㄡ  zou
-ㄢ  zan
-ㄣ  zen
-ㄤ  zang
-ㄥ  zeng
-ㄦ  zer
-ㄧ  zi
-ㄨ  zu
-ㄩ  zv
-ㄧㄚ    zia
+ㄚ      za
+ㄛ      zo
+ㄜ      ze
+ㄝ      z^e
+ㄞ      zai
+ㄟ      zei
+ㄠ      zao
+ㄡ      zou
+ㄢ      zan
+ㄣ      zen
+ㄤ      zang
+ㄥ      zeng
+ㄦ      zer
+
+ㄧ      zyi
+ㄧ      zya -> za
+ㄧㄛ    zyo
+ㄧㄝ    zye
+ㄧㄡ    zyou
+ㄧㄣ    zyin
+ㄧㄥ    zying
+
+ㄧ      zi
+ㄧ      zia -> za
 ㄧㄝ    zie
-ㄧㄠ    ziao
 ㄧㄡ    ziu
-ㄧㄢ    zian
 ㄧㄣ    zin
-ㄧㄤ    ziang
 ㄧㄥ    zing
-ㄨㄚ    zua
-ㄨㄛ    zuo
-ㄨㄞ    zuai
-ㄨㄟ    zui
-ㄨㄢ    zuan
-ㄨㄣ    zun
-ㄨㄤ    zuang
-ㄨㄥ    zong
-ㄩㄝ    zue
-ㄩㄢ    zvan
-ㄩㄣ    zvn
 ㄩㄥ    ziong
+
+ㄨ      zwu
+ㄨ      zwa -> za
+ㄨ      zwe -> ze
+ㄨㄛ    zwo
+
+ㄨ      zu
+ㄨ      zua -> za
+ㄨㄟ    zui
+ㄨㄛ    zuo
+ㄨㄣ    zun
+ㄨㄥ    zong
+
+ㄩ      zyu
+ㄩㄝ    zyue
+ㄩㄢ    zyuan
+ㄩㄣ    zyun
+ㄩㄥ    zyong
+
+ㄩ      z"u
+ㄩㄝ    z"ue
+ㄩㄣ    z"un
+ㄩ      zv
+ㄩㄝ    zve
+ㄩㄣ    zvn
+
+ㄅ      zb -> z
+ㄆ      zp -> z
+ㄇ      zm -> z
+ㄈ      zf -> z
+ㄉ      zd -> z
+ㄊ      zt -> z
+ㄋ      zn -> z
+ㄌ      zl -> z
+ㄍ      zg -> z
+ㄎ      zk -> z
+ㄏ      zh -> z
+
+ㄐ      zji -> zi
+ㄑ      zqi -> zi
+ㄒ      zxi -> zi
+ㄐ      zju -> zyu
+ㄑ      zqu -> zyu
+ㄒ      zxu -> zyu
+
+ㄓ      zzhi
+ㄔ      zchi
+ㄕ      zshi
+ㄖ      zri
+ㄓ      zzha -> za
+ㄔ      zcha -> za
+ㄕ      zsha -> za
+ㄖ      zra -> za
+ㄓ      zzhe -> ze
+ㄔ      zche -> ze
+ㄕ      zshe -> ze
+ㄖ      zre -> ze
+ㄓ      zzho -> zo
+ㄔ      zcho -> zo
+ㄕ      zsho -> zo
+ㄖ      zro -> zo
+ㄓ      zzhu -> zu
+ㄔ      zchu -> zu
+ㄕ      zshu -> zu
+ㄖ      zru -> zu
+
+ㄗ      zzi
+ㄘ      zci
+ㄙ      zsi
+ㄗ      zza -> za
+ㄘ      zca -> za
+ㄙ      zsa -> za
+ㄗ      zze -> ze
+ㄘ      zce -> ze
+ㄙ      zse -> ze
+ㄗ      zzo -> zo
+ㄘ      zco -> zo
+ㄙ      zso -> zo
+ㄗ      zzu -> zu
+ㄘ      zcu -> zu
+ㄙ      zsu -> zu
+
 ¯   z1
 ˊ   z2
 ˇ   z3
@@ -2329,13 +1941,14 @@
 (╯°□°）╯︵\x20┻━┻           (tableflip)
 ┬─┬ノ(\x20º\x20_\x20ºノ)    (tablerestore)
 ヽ༼ຈل͜ຈ༽ﾉ                    (riot)
-ಠ_ಠ                         (disapprove)
+ಠ_ಠ                         (disa)
 ｷﾀ━━━━━━(ﾟ∀ﾟ)━━━━━━         (kita)      # including those '!!!!' at the end seems to crash Cocoa...
 ¯\(°_o)/¯                   (dunnolol)
 ¯\_(ツ)_/¯                  (shrug)
 (屮ﾟДﾟ)屮                   (yuno)
 щ(ﾟДﾟщ)                     (yuno<)
 (ﾟдﾟ≡ﾟдﾟ)                   (huh)
+Σ(゜д゜;)                   (surprise)
 (´・ω・`)                   :3
 (｀・ω・´)                  >:3
 

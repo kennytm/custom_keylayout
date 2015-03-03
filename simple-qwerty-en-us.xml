@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License along with
 this program.  If not, see <http://www.gnu.org/licenses/>.
 
 -->
-<keyboard group="{{group}}" id="{{id}}" name="{{name}}">
+<keyboard group="{{group}}" id="{{id}}" name="{{name}}" maxout="{{maxout}}">
     <layouts>
         <layout first="0" last="17" modifiers="Modifiers" mapSet="ANSI"/>
         <layout first="18" last="18" modifiers="Modifiers" mapSet="JIS"/>
@@ -351,15 +351,14 @@ this program.  If not, see <http://www.gnu.org/licenses/>.
             <when state="none" next="c-"/>
         </action>{{#each actions}}
         <action id="{{fsm_format action @index}}">
-            <when state="none" output="{{fsm_format key @index}}"/>{{#each this}}{{#if this}}
-            <when state="{{@key}}" output="{{escape this}}"/>{{else}}
-            <when state="{{@key}}" next="{{@key}}{{fsm_format action @../index}}"/>{{/if}}{{/each}}
+            <when state="none" output="{{fsm_format key @index}}"/>{{#each this}}
+            <when state="{{@key}}"{{#if output}} output="{{escape output}}"{{/if}}{{#if state}} next="{{state}}"{{/if}}/>{{/each}}
         </action>{{/each}}
     </actions>
     <terminators>
         <when state="c-" output="⎄"/>{{#each intermediates}}
-        <when state="{{@key}}" output="{{escape this}}"/>{{/each}}{{#each actions[0]}}{{#if this}}
-        <when state="{{@key}}" output="{{escape this}}"/>{{/if}}{{/each}}
+        <when state="{{@key}}" output="{{escape this}}"/>{{/each}}{{#each actions[0]}}{{#if output}}
+        <when state="{{@key}}" output="{{escape output}}"/>{{/if}}{{/each}}
     </terminators>
 </keyboard>
 

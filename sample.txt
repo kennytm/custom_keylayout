@@ -11,3 +11,15 @@
 —   ---
 （╯°□°）╯︵\x20┻━┻  (tableflip)
 
+# Explicit state transition
+
+½   f12 -> f
+⅓   f13 -> f
+¼   f14 -> f
+⅕   f15 -> f
+⅙   f16 -> f
+⅐   f17 -> f
+⅛   f18 -> f
+⅑   f19 -> f
+⅒   f110
+

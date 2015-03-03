@@ -23,6 +23,7 @@ extern crate "rustc-serialize" as rustc_serialize;
 extern crate handlebars;
 extern crate regex;
 extern crate rand;
+#[macro_use] extern crate literator;
 
 mod new_stdio;
 
@@ -76,7 +77,7 @@ Options:
 //{{{ Escape & Unescape
 
 fn unescape(s: &str) -> String {
-    let escape_regex = regex!(r#"\\(?:(?P<oct>[0-9]+)|[xX](?P<hex>[0-9a-fA-F]+)|(?P<special>[\\"nrt]))"#);
+    let escape_regex = regex!(r#"\\(?:(?P<oct>[0-7]{1,7})|[xX](?P<hex>[0-9a-fA-F]{1,6})|(?P<special>[\\"nrt]))"#);
     escape_regex.replace_all(s, |captures: &Captures| {
         for group_name in &["oct", "hex", "special"] {
             if let Some(content) = captures.name(group_name) {
@@ -130,7 +131,25 @@ fn test_escape_html() {
 enum Action {
     Next,
     Output(String),
+    OutputGoto(String, Vec<u8>),
 }
+
+impl Action {
+    fn is_output_goto(&self) -> bool {
+        match *self {
+            Action::OutputGoto(..) => true,
+            _ => false,
+        }
+    }
+
+    fn output(&self) -> Option<&String> {
+        match *self {
+            Action::Output(ref s) | Action::OutputGoto(ref s, _) => Some(s),
+            Action::Next => None,
+        }
+    }
+}
+
 
 #[derive(Clone, PartialEq, Eq, Debug)]
 struct Fsm {
@@ -142,7 +161,7 @@ impl Fsm {
         Fsm { actions: vec![HashMap::new(); 95] }
     }
 
-    fn insert(&mut self, inputs: &[u8], output: String) {
+    fn insert(&mut self, inputs: &[u8], act: Action) {
         let last_index = inputs.len() - 1;
 
         // Sort out the intermediate states.
@@ -150,15 +169,20 @@ impl Fsm {
             let index = (inputs[i] - 0x20) as usize;
             let source_state_name = inputs[..i].to_vec();
             let ins_result = self.actions[index].insert(source_state_name, Action::Next);
-            if let Some(act @ Action::Output(_)) = ins_result {
-                self.actions[0].insert(inputs[..i+1].to_vec(), act);
+            match ins_result {
+                Some(old_act @ Action::Output(_)) => {
+                    self.actions[0].insert(inputs[..i+1].to_vec(), old_act);
+                }
+                Some(old_act @ Action::OutputGoto(..)) => {
+                    panic!("Ambiguous state transition for {:?}", old_act);
+                }
+                _ => {},
             }
         }
 
         // Do the final output.
         let source_state_name = &inputs[..last_index];
         let index = (inputs[last_index] - 0x20) as usize;
-        let act = Action::Output(output);
 
         let (space_action, default_action) = self.actions.split_at_mut(index);
         let space_action = &mut space_action[0];
@@ -170,9 +194,13 @@ impl Fsm {
             }
             Entry::Occupied(occ) => {
                 match *occ.get() {
-                    Action::Next => space_action.insert(inputs.to_vec(), act),
-                    _ => panic!("Duplicated entry: {:?}", from_utf8(inputs)),
-                };
+                    Action::Next if !act.is_output_goto() => {
+                        space_action.insert(inputs.to_vec(), act);
+                    }
+                    _ => {
+                        panic!("Duplicated entry: {:?}", from_utf8(inputs));
+                    }
+                }
             }
         }
     }
@@ -191,48 +219,47 @@ impl Fsm {
             })
         }).collect()
     }
+
+    fn longest_output_len(&self) -> usize {
+        self.actions.iter().flat_map(|actions| {
+            actions.values().filter_map(|action| {
+                action.output().map(|s| s.utf16_units().count())
+            })
+        }).max().unwrap_or(1)
+    }
 }
 
 #[test]
 fn test_fsm() {
     let mut fsm = Fsm::new();
 
-    fsm.insert(b"^1", "¹".to_owned());
-    fsm.insert(b"^2", "²".to_owned());
-    fsm.insert(b"12", "½".to_owned());
-    fsm.insert(b"gs", "σ".to_owned());
-    fsm.insert(b"gsf", "ς".to_owned());
-    fsm.insert(b"gsv", "ς".to_owned());
+    fsm.insert(b"^1", Action::Output("¹".to_owned()));
+    fsm.insert(b"^2", Action::Output("²".to_owned()));
+    fsm.insert(b"12", Action::Output("½".to_owned()));
+    fsm.insert(b"gs", Action::Output("σ".to_owned()));
+    fsm.insert(b"gsf", Action::Output("ς".to_owned()));
+    fsm.insert(b"gsv", Action::Output("ς".to_owned()));
 
-    macro_rules! hash_map {
-        () => { HashMap::new() };
-        ($($key:expr => $value:expr,)*) => {{
-            let mut map = HashMap::new();
-            $(map.insert($key.to_vec(), $value);)*
-            map
-        }}
-    }
-
-    let expected_actions_default = hash_map![];
-    let expected_actions_circum_and_g = hash_map![
-        b"" => Action::Next,
+    let expected_actions_default = container![];
+    let expected_actions_circum_and_g = container![
+        vec![] => Action::Next,
     ];
-    let expected_actions_1 = hash_map![
-        b"" => Action::Next,
-        b"^" => Action::Output("¹".to_owned()),
+    let expected_actions_1 = container![
+        vec![] => Action::Next,
+        vec![b'^'] => Action::Output("¹".to_owned()),
     ];
-    let expected_actions_2 = hash_map![
-        b"^" => Action::Output("²".to_owned()),
-        b"1" => Action::Output("½".to_owned()),
+    let expected_actions_2 = container![
+        vec![b'^'] => Action::Output("²".to_owned()),
+        vec![b'1'] => Action::Output("½".to_owned()),
     ];
-    let expected_actions_s = hash_map![
-        b"g" => Action::Next,
+    let expected_actions_s = container![
+        vec![b'g'] => Action::Next,
     ];
-    let expected_actions_space = hash_map![
-        b"gs" => Action::Output("σ".to_owned()),
+    let expected_actions_space = container![
+        vec![b'g', b's'] => Action::Output("σ".to_owned()),
     ];
-    let expected_actions_f_and_v = hash_map![
-        b"gs" => Action::Output("ς".to_owned()),
+    let expected_actions_f_and_v = container![
+        vec![b'g', b's'] => Action::Output("ς".to_owned()),
     ];
 
     for (i, actions) in fsm.actions.iter().enumerate() {
@@ -259,9 +286,44 @@ fn test_fsm() {
 #[should_fail]
 fn test_fsm_duplicated() {
     let mut fsm = Fsm::new();
-    fsm.insert(b"ab", "c".to_owned());
-    fsm.insert(b"ab", "d".to_owned());
+    fsm.insert(b"ab", Action::Output("c".to_owned()));
+    fsm.insert(b"ab", Action::Output("d".to_owned()));
 }
+
+#[test]
+fn test_fsm_longest_output_len() {
+    let mut fsm = Fsm::new();
+    fsm.insert(b"a", Action::Output("abababa".to_owned()));
+    assert_eq!(fsm.longest_output_len(), 7);
+
+    fsm.insert(b"bb", Action::OutputGoto("cdcdcdcd".to_owned(), vec![b'a']));
+    assert_eq!(fsm.longest_output_len(), 8);
+
+    fsm.insert(b"ab", Action::Output("lol".to_owned()));
+    assert_eq!(fsm.longest_output_len(), 8);
+
+    fsm.insert(b"xyxyxyxyxyxyxyxyxyxyxyxyxyx", Action::Next);
+    assert_eq!(fsm.longest_output_len(), 8);
+
+    fsm.insert(b"bc", Action::Output("ｕｔｆ１６🙀🙀".to_owned()));
+    assert_eq!(fsm.longest_output_len(), 9);
+}
+
+#[test]
+#[should_fail]
+fn test_fsm_ambig_output_goto_fail() {
+    let mut fsm = Fsm::new();
+    fsm.insert(b"ab", Action::Output("c".to_owned()));
+    fsm.insert(b"a", Action::OutputGoto("d".to_owned(), vec![b'a', b'b']));
+}
+
+#[test]
+fn test_fsm_ambig_output_goto_ok() {
+    let mut fsm = Fsm::new();
+    fsm.insert(b"a", Action::Output("c".to_owned()));
+    fsm.insert(b"ab", Action::OutputGoto("d".to_owned(), vec![b'a']));
+}
+
 
 //}}}
 
@@ -271,7 +333,7 @@ fn test_fsm_duplicated() {
 impl Fsm {
     fn parse<R: BufRead>(reader: R) -> Fsm {
         // Note: Need to use "\t\n\r\v\f " instead of "\s" due to rust-lang/regex#28
-        let line_regex = regex!(r"^\s*([^#\t\n\r\v\f ]\S*)\s+([!-~]+)");
+        let line_regex = regex!(r"^\s*([^#\t\n\r\v\f ]\S*)\s+([!-~]+)(?:\s+->\s*([!-~]+))?");
 
         let mut fsm = Fsm::new();
         for line in reader.lines() {
@@ -279,7 +341,11 @@ impl Fsm {
                 if let Some(captures) = line_regex.captures(&line) {
                     let output = unescape(captures.at(1).unwrap());
                     let inputs = captures.at(2).unwrap();
-                    fsm.insert(inputs.as_bytes(), output);
+                    let action = match captures.at(3) {
+                        Some(s) => Action::OutputGoto(output, s.as_bytes().to_vec()),
+                        None => Action::Output(output),
+                    };
+                    fsm.insert(inputs.as_bytes(), action);
                 }
             }
         }
@@ -304,19 +370,21 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCD
 ṵ   u~
 \x2468  \o/
 \x1a2Bc o_o
+©   oc -> AB
 
     ".as_bytes();
 
     let fsm = Fsm::parse(reader);
 
     let mut expected = Fsm::new();
-    expected.insert(b"AB", "Æ".to_owned());
-    expected.insert(b"ABCD", "ABCDEFGHIJKLMNOPQRSTUVWXYZ".to_owned());
-    expected.insert(b"^1", "¹".to_owned());
-    expected.insert(b"^2", "²".to_owned());
-    expected.insert(b"\\o/", "\u{2468}".to_owned());
-    expected.insert(b"o_o", "\u{1a2bc}".to_owned());
-    expected.insert(b"u~", "ṵ".to_owned());
+    expected.insert(b"AB", Action::Output("Æ".to_owned()));
+    expected.insert(b"ABCD", Action::Output("ABCDEFGHIJKLMNOPQRSTUVWXYZ".to_owned()));
+    expected.insert(b"^1", Action::Output("¹".to_owned()));
+    expected.insert(b"^2", Action::Output("²".to_owned()));
+    expected.insert(b"\\o/", Action::Output("\u{2468}".to_owned()));
+    expected.insert(b"o_o", Action::Output("\u{1a2bc}".to_owned()));
+    expected.insert(b"u~", Action::Output("ṵ".to_owned()));
+    expected.insert(b"oc", Action::OutputGoto("©".to_owned(), b"AB".to_vec()));
     assert_eq!(fsm, expected);
 }
 
@@ -330,31 +398,42 @@ fn to_json_state_string(state: &[u8]) -> String {
 
 impl Fsm {
     fn into_json_object(self) -> Object {
-        let mut result = Object::new();
-
         let intermediates = self.intermediate_states().into_iter().map(|s| {
             let state = to_json_state_string(s);
             let output = Json::String(String::from_utf8(s.to_vec()).unwrap());
             (state, output)
         }).collect();
 
-        let actions = self.actions.into_iter().map(|states| {
+        let actions = self.actions.into_iter().enumerate().map(|(i, states)| {
+            let next_action = format!("{:02x}", i + 0x20);
+
             Json::Object(states.into_iter().map(|entry| {
-                let state = to_json_state_string(&entry.0);
-                let output = match entry.1 {
-                    Action::Output(ref output) => Json::String(output.clone()),
-                    Action::Next => Json::Null,
+                let this_state = to_json_state_string(&entry.0);
+                let mut result = Object::new();
+
+                if let Some(output) = entry.1.output() {
+                    result.insert("output".to_owned(), Json::String(output.clone()));
+                }
+
+                let next_state = match entry.1 {
+                    Action::Next => Some(format!("{}{}", this_state, next_action)),
+                    Action::OutputGoto(_, ref state) => Some(to_json_state_string(state)),
+                    _ => None
                 };
-                (state, output)
+                if let Some(state) = next_state {
+                    result.insert("state".to_owned(), Json::String(state));
+                }
+
+                (this_state, Json::Object(result))
             }).collect())
         }).collect();
 
-        result.insert("actions".to_owned(), Json::Array(actions));
-        result.insert("intermediates".to_owned(), Json::Object(intermediates));
-        result
+        container![
+            "actions".to_owned() => Json::Array(actions),
+            "intermediates".to_owned() => Json::Object(intermediates),
+        ]
     }
 }
-
 
 #[test]
 fn test_to_json() {
@@ -374,13 +453,13 @@ fn test_to_json() {
         {
             "actions": [
                 {                           "#, /* space */ r#"
-                    "c-27": "´",
-                    "c-2727": "˝"
+                    "c-27": {"output": "´"},
+                    "c-2727": {"output": "˝"}
                 },
                 {},{},{},{},{},{},          "#, /* !"#$%& */ r#"
                 {                           "#, /* ' */ r#"
-                    "c-": null,
-                    "c-27": null
+                    "c-": {"state": "c-27"},
+                    "c-27": {"state": "c-2727"}
                 },
                 {},{},{},{},{},{},{},{},    "#, /* ()*+,-./ */ r#"
                 {},{},{},{},{},{},{},{},    "#, /* 01234567 */ r#"
@@ -388,24 +467,24 @@ fn test_to_json() {
                 {},{},{},{},{},{},{},{},    "#, /* @ABCDEFG */ r#"
                 {},{},{},{},{},{},{},       "#, /* HIJKLMN */ r#"
                 {                           "#, /* O */ r#"
-                    "c-27": "Ó",
-                    "c-2727": "Ő"
+                    "c-27": {"output": "Ó"},
+                    "c-2727": {"output": "Ő"}
                 },
                 {},{},{},{},{},{},{},{},    "#, /* PQRSTUVW */ r#"
                 {},{},{},{},{},{},{},{},    "#, /* XYZ[\]^_ */ r#"
                 {},{},{},{},{},{},{},{},    "#, /* `abcdefg */ r#"
                 {},{},{},{},                "#, /* hijk */ r#"
                 {                           "#, /* l */ r#"
-                    "c-": null,
-                    "c-6c6f": "☺"
+                    "c-": {"state": "c-6c"},
+                    "c-6c6f": {"output": "☺"}
                 },
                 {},{},                      "#, /* mn */ r#"
                 {                           "#, /* o */ r#"
-                    "c-": null,
-                    "c-6f": "°",
-                    "c-27": "ó",
-                    "c-2727": "ő",
-                    "c-6c": null
+                    "c-": {"state": "c-6f"},
+                    "c-6f": {"output": "°"},
+                    "c-27": {"output": "ó"},
+                    "c-2727": {"output": "ő"},
+                    "c-6c": {"state": "c-6c6f"}
                 },
                 {},{},{},{},{},{},{},{},    "#, /* pqrstuvw */ r#"
                 {},{},{},{},{},{},{}        "#, /* xyz{|}~ */ r#"
@@ -469,12 +548,15 @@ pub fn main() {
         Fsm::parse(lock)
     };
 
+    let maxout = fsm.longest_output_len();
+
     // Convert to JSON and populate some extra arguments.
     let mut data = fsm.into_json_object();
     let id = args.flag_id.unwrap_or_else(|| thread_rng().gen_range(-32768, 0));
     data.insert("id".to_owned(), Json::I64(id as i64));
     data.insert("group".to_owned(), Json::I64(args.flag_group as i64));
     data.insert("name".to_owned(), Json::String(args.flag_name));
+    data.insert("maxout".to_owned(), Json::U64(maxout as u64));
     let data = Json::Object(data);
 
     // Create the template.

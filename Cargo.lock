@@ -1,48 +1,63 @@
 [root]
 name = "custom_keylayout"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
- "docopt 0.6.39 (registry+https://github.com/rust-lang/crates.io-index)",
- "docopt_macros 0.6.39 (registry+https://github.com/rust-lang/crates.io-index)",
- "handlebars 0.6.4 (registry+https://github.com/rust-lang/crates.io-index)",
+ "docopt 0.6.42 (registry+https://github.com/rust-lang/crates.io-index)",
+ "docopt_macros 0.6.42 (registry+https://github.com/rust-lang/crates.io-index)",
+ "handlebars 0.6.5 (registry+https://github.com/rust-lang/crates.io-index)",
+ "literator 0.0.1 (git+git://github.com/kmcallister/literator)",
  "rand 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "regex 0.1.16 (registry+https://github.com/rust-lang/crates.io-index)",
- "regex_macros 0.1.9 (registry+https://github.com/rust-lang/crates.io-index)",
- "rustc-serialize 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "regex_macros 0.1.10 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rustc-serialize 0.2.15 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "docopt"
-version = "0.6.39"
+version = "0.6.42"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
+ "libc 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "regex 0.1.16 (registry+https://github.com/rust-lang/crates.io-index)",
- "rustc-serialize 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rustc-serialize 0.2.15 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "docopt_macros"
-version = "0.6.39"
+version = "0.6.42"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
- "docopt 0.6.39 (registry+https://github.com/rust-lang/crates.io-index)",
+ "docopt 0.6.42 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
+name = "fixed_size_array"
+version = "0.0.1"
+source = "git+https://github.com/kmcallister/fixed-size-array#a5ff00a60c8b49f30487f57d2ed975f12a007506"
+
+[[package]]
 name = "handlebars"
-version = "0.6.4"
+version = "0.6.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "log 0.2.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "regex 0.1.16 (registry+https://github.com/rust-lang/crates.io-index)",
- "regex_macros 0.1.9 (registry+https://github.com/rust-lang/crates.io-index)",
- "rustc-serialize 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "regex_macros 0.1.10 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rustc-serialize 0.2.15 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "libc"
 version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "literator"
+version = "0.0.1"
+source = "git+git://github.com/kmcallister/literator#9025ec866bfe2cf8e156386c792d860b5436060e"
+dependencies = [
+ "fixed_size_array 0.0.1 (git+https://github.com/kmcallister/fixed-size-array)",
+]
 
 [[package]]
 name = "log"
@@ -65,7 +80,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "regex_macros"
-version = "0.1.9"
+version = "0.1.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "regex 0.1.16 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -73,6 +88,6 @@ dependencies = [
 
 [[package]]
 name = "rustc-serialize"
-version = "0.3.0"
+version = "0.2.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 

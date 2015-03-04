@@ -2,32 +2,32 @@
 name = "custom_keylayout"
 version = "0.2.0"
 dependencies = [
- "docopt 0.6.42 (registry+https://github.com/rust-lang/crates.io-index)",
- "docopt_macros 0.6.42 (registry+https://github.com/rust-lang/crates.io-index)",
+ "docopt 0.6.44 (registry+https://github.com/rust-lang/crates.io-index)",
+ "docopt_macros 0.6.44 (registry+https://github.com/rust-lang/crates.io-index)",
  "handlebars 0.6.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "literator 0.0.1 (git+git://github.com/kmcallister/literator)",
  "rand 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "regex 0.1.16 (registry+https://github.com/rust-lang/crates.io-index)",
  "regex_macros 0.1.10 (registry+https://github.com/rust-lang/crates.io-index)",
- "rustc-serialize 0.2.15 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rustc-serialize 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "docopt"
-version = "0.6.42"
+version = "0.6.44"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "libc 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "regex 0.1.16 (registry+https://github.com/rust-lang/crates.io-index)",
- "rustc-serialize 0.2.15 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rustc-serialize 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "docopt_macros"
-version = "0.6.42"
+version = "0.6.44"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
- "docopt 0.6.42 (registry+https://github.com/rust-lang/crates.io-index)",
+ "docopt 0.6.44 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -43,7 +43,7 @@ dependencies = [
  "log 0.2.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "regex 0.1.16 (registry+https://github.com/rust-lang/crates.io-index)",
  "regex_macros 0.1.10 (registry+https://github.com/rust-lang/crates.io-index)",
- "rustc-serialize 0.2.15 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rustc-serialize 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -88,6 +88,6 @@ dependencies = [
 
 [[package]]
 name = "rustc-serialize"
-version = "0.2.15"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 

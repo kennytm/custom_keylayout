@@ -14,19 +14,16 @@
 // this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #![feature(io)]
-#![feature(old_io)]
 #![feature(plugin)]
 #![plugin(regex_macros)]
 
 extern crate regex;
 extern crate "rustc-serialize" as rustc_serialize;
 
-#[path="../new_stdio.rs"] mod new_stdio;
 
-use std::io::BufReadExt;
+use std::io::{BufReadExt, stdin};
 use std::collections::HashMap;
 use std::borrow::ToOwned;
-use new_stdio::stdin;
 
 macro_rules! input_map {
     ($($name:ident = $chr:expr),*; $($chars:expr),*) => {{
@@ -84,7 +81,7 @@ pub fn main() {
         'Z', 'X', 'C', 'V', 'B', 'N', 'M'
     ];
 
-    let mut stdin = stdin();
+    let stdin = stdin();
 'read_lines:
     for line in stdin.lock().lines() {
         macro_rules! try_or_continue {

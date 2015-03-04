@@ -14,7 +14,6 @@
 // this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #![feature(path, fs, io, core, collections, std_misc)]
-#![feature(old_io)]
 #![feature(plugin)]
 #![plugin(regex_macros, docopt_macros)]
 
@@ -25,8 +24,6 @@ extern crate regex;
 extern crate rand;
 #[macro_use] extern crate literator;
 
-mod new_stdio;
-
 use handlebars::{Handlebars, Context, Helper, RenderContext, RenderError};
 use rustc_serialize::json::{Json, Object};
 use rustc_serialize::hex::ToHex;
@@ -34,14 +31,13 @@ use rand::{Rng, thread_rng};
 use regex::Captures;
 use std::path::Path;
 use std::fs::File;
-use std::io::{Read, BufRead, BufReadExt};
+use std::io::{Read, BufRead, BufReadExt, stdin};
 use std::collections::{HashMap, HashSet};
 use std::collections::hash_map::Entry;
 use std::num::from_str_radix;
 use std::char;
 use std::str::from_utf8;
 use std::borrow::ToOwned;
-use new_stdio::stdin;
 
 docopt!{Args, "
 Usage: custom_keylayout [-g GROUP] [-i ID] [-n NAME] [-t TEMPLATE]
@@ -543,7 +539,7 @@ pub fn main() {
 
     // Parse the input table into FSM.
     let fsm = {
-        let mut stdin = stdin();
+        let stdin = stdin();
         let lock = stdin.lock();
         Fsm::parse(lock)
     };

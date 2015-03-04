@@ -1,4 +1,4 @@
-#![feature(process, io, path)]
+#![feature(io, path)]
 
 use std::process::{Command, Stdio};
 use std::io::Write;
@@ -57,8 +57,8 @@ fn test_invocation() {
 
     // Run it.
     let mut process = unwrap!(Command::new(&exe_path)
-                                        .stdin(Stdio::capture())
-                                        .stdout(Stdio::capture())
+                                        .stdin(Stdio::piped())
+                                        .stdout(Stdio::piped())
                                         .spawn());
 
     // Feed the compose file.

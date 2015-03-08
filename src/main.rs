@@ -13,7 +13,7 @@
 // You should have received a copy of the GNU General Public License along with
 // this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#![feature(path, fs, io, core, collections, std_misc)]
+#![feature(path, io, core, collections, std_misc)]
 #![feature(plugin)]
 #![plugin(regex_macros, docopt_macros)]
 

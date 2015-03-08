@@ -291,15 +291,18 @@
 む      jMU -> j
 め      jME -> j
 も      jMO -> j
+み      jMY -> j_Y
 ん      jMB -> jB
 ん      jMM -> jM
 ん      jMP -> jP
 
+ん      jN
 な      jNA -> j
 に      jNI -> j
 ぬ      jNU -> j
 ね      jNE -> j
 の      jNO -> j
+に      jNY -> j_Y
 ん      jN' -> j
 ん      jNB -> jB
 ん      jNC -> jC
@@ -395,6 +398,7 @@
 エ      je -> j
 オ      jo -> j
 
+ブ      jb
 バ      jba -> j
 ビ      jbi -> j
 ブ      jbu -> j
@@ -403,12 +407,14 @@
 ッ      jbb -> jb
 ビ      jby -> j_y
 
+チ      jch
 チャ    jcha -> j
 チ      jchi -> j
 チュ    jchu -> j
 チェ    jche -> j
 チョ    jcho -> j
 
+ド      jd
 ダ      jda -> j
 ディ    jdi -> j
 ドゥ    jdu -> j
@@ -417,6 +423,7 @@
 ッ      jdd -> jd
 デ      jdy -> j_y
 
+フ      jf
 ファ    jfa -> j
 フィ    jfi -> j
 フ      jfu -> j
@@ -425,6 +432,7 @@
 ッ      jff -> jf
 フ      jfy -> j_y
 
+グ      jg
 ガ      jga -> j
 ギ      jgi -> j
 グ      jgu -> j
@@ -441,6 +449,7 @@
 ッ      jhh -> jh
 ヒ      jhy -> j_y
 
+ジ      jj
 ジャ    jja -> j
 ジ      jji -> j
 ジュ    jju -> j
@@ -448,6 +457,7 @@
 ジョ    jjo -> j
 ッ      jjj -> jj
 
+ク      jk
 カ      jka -> j
 キ      jki -> j
 ク      jku -> j
@@ -457,20 +467,24 @@
 キ      jky -> j_y
 ク      jkw -> j_
 
+ム      jm
 マ      jma -> j
 ミ      jmi -> j
 ム      jmu -> j
 メ      jme -> j
 モ      jmo -> j
+ミ      jmy -> j_y
 ン      jmb -> jb
 ン      jmm -> jm
 ン      jmp -> jp
 
+ン      jn
 ナ      jna -> j
 ニ      jni -> j
 ヌ      jnu -> j
 ネ      jne -> j
 ノ      jno -> j
+ニ      jny -> j_y
 ン      jn' -> j
 ン      jnb -> jb
 ン      jnc -> jc
@@ -490,6 +504,7 @@
 ン      jnw -> jw
 ン      jnz -> jz
 
+プ      jp
 パ      jpa -> j
 ピ      jpi -> j
 プ      jpu -> j
@@ -498,6 +513,7 @@
 ッ      jpp -> jp
 ピ      jpy -> j_y
 
+ル      jr
 ラ      jra -> j
 リ      jri -> j
 ル      jru -> j
@@ -506,6 +522,8 @@
 ッ      jrr -> jr
 リ      jry -> j_y
 
+ス      js
+シ      jsh
 サ      jsa -> j
 ス      jsu -> j
 セ      jse -> j
@@ -517,6 +535,8 @@
 シェ    jshe -> j
 ショ    jsho -> j
 
+ト      jt
+ツ      jts
 タ      jta -> j
 ティ    jti -> j
 トゥ    jtu -> j
@@ -550,6 +570,7 @@
 ヨ      jyo -> j
 ッ      jyy -> jy
 
+ズ      jz
 ザ      jza -> j
 ズ      jzu -> j
 ゼ      jze -> j
@@ -1939,7 +1960,7 @@
 #{{{ Emoticons
 
 (╯°□°）╯︵\x20┻━┻           (tableflip)
-┬─┬ノ(\x20º\x20_\x20ºノ)    (tablerestore)
+┬─┬ノ(\x20º\x20_\x20ºノ)    (tablerest)
 ヽ༼ຈل͜ຈ༽ﾉ                    (riot)
 ಠ_ಠ                         (disa)
 ｷﾀ━━━━━━(ﾟ∀ﾟ)━━━━━━         (kita)      # including those '!!!!' at the end seems to crash Cocoa...

@@ -47,13 +47,13 @@
 ⇤   |<-
 ↑   ^|
 ↓   |v
-↔︎   <->
+↔   <->
 ⇔   <=>
-↕︎   ^|v
-↘︎   \v
-↗︎   /^
-↖︎   ^\
-↙︎   v/
+↕   ^|v
+↘   \v
+↗   /^
+↖   ^\
+↙   v/
 ⇏   /=>
 ⇏   =/>
 ⇎   <=/>
@@ -1132,10 +1132,10 @@
 ☂   &umbrella
 ☃   &snowman
 ☆   &star
-♠︎   &spades
-♣︎   &clubs
-♥︎   &hearts
-♦︎   &diams
+♠   &spades
+♣   &clubs
+♥   &hearts
+♦   &diams
 ♀   &female
 ♂   &male
 

@@ -1,4 +1,3 @@
-#![feature(io, path)]
 
 use std::process::{Command, Stdio};
 use std::io::Write;
@@ -50,9 +49,10 @@ macro_rules! unwrap {
 #[test]
 fn test_invocation() {
     // Specify the location of the EXE file.
-    let mut exe_path = PathBuf::new(file!());
+    let mut exe_path = PathBuf::from(file!());
     exe_path.pop();
     exe_path.set_file_name("target");
+    exe_path.push("debug");
     exe_path.push("parse_compose");
 
     // Run it.

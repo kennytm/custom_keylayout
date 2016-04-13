@@ -13,33 +13,36 @@
 // You should have received a copy of the GNU General Public License along with
 // this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#![feature(path, io, core, collections, std_misc)]
-#![feature(plugin)]
-#![plugin(regex_macros, docopt_macros)]
+#[macro_use]
+extern crate lazy_static;
 
 extern crate docopt;
-extern crate "rustc-serialize" as rustc_serialize;
+extern crate serde_json;
 extern crate handlebars;
 extern crate regex;
 extern crate rand;
-#[macro_use] extern crate literator;
+extern crate hex;
+extern crate encoding;
 
 use handlebars::{Handlebars, Context, Helper, RenderContext, RenderError};
-use rustc_serialize::json::{Json, Object};
-use rustc_serialize::hex::ToHex;
+use serde_json::Value;
+use serde_json::builder::ObjectBuilder;
 use rand::{Rng, thread_rng};
-use regex::Captures;
+use regex::{Regex, Captures};
+use docopt::Docopt;
+use hex::ToHex;
+use encoding::all::UTF_16LE;
+use encoding::{Encoding, EncoderTrap};
 use std::path::Path;
 use std::fs::File;
-use std::io::{Read, BufRead, BufReadExt, stdin};
+use std::io::{Read, BufRead, stdin};
 use std::collections::{HashMap, HashSet};
 use std::collections::hash_map::Entry;
-use std::num::from_str_radix;
 use std::char;
-use std::str::from_utf8;
-use std::borrow::ToOwned;
+use std::str::{from_utf8, FromStr};
+use std::i64;
 
-docopt!{Args, "
+const USAGE: &'static str = "
 Usage: custom_keylayout [-g GROUP] [-i ID] [-n NAME] [-t TEMPLATE]
        custom_keylayout --help
 
@@ -63,24 +66,38 @@ Options:
     -n NAME, --name NAME        Name of the keylayout [default: My New Keylayout].
     -t TEMPLATE, --template TEMPLATE
                                 Template XML file to use [default: ./simple-qwerty-en-us.xml].
-",
-    flag_group: i32,
-    flag_id: Option<i32>,
-    flag_name: String,
-    flag_template: String,
+";
+
+lazy_static! {
+    static ref ESCAPE_REGEX: Regex = Regex::new(r#"\\(?:(?P<oct>[0-7]{1,7})|[xX](?P<hex>[0-9a-fA-F]{1,6})|(?P<special>[\\"nrt]))"#).unwrap();
+    static ref ESCAPE_HTML_REGEX: Regex = Regex::new("[<>&\"]").unwrap();
+    static ref LINE_REGEX: Regex = Regex::new(r"^\s*([^#\s]\S*)\s+([!-~]+)(?:\s+->\s*([!-~]+))?").unwrap();
+}
+
+macro_rules! container {
+    [] => {
+        HashMap::new()
+    };
+    [$($key:expr => $value:expr),*] => {{
+        let mut h = HashMap::new();
+        $(h.insert($key, $value);)*
+        h
+    }};
+    [$($key:expr => $value:expr),*,] => {
+        container![$($key => $value),*]
+    };
 }
 
 //{{{ Escape & Unescape
 
 fn unescape(s: &str) -> String {
-    let escape_regex = regex!(r#"\\(?:(?P<oct>[0-7]{1,7})|[xX](?P<hex>[0-9a-fA-F]{1,6})|(?P<special>[\\"nrt]))"#);
-    escape_regex.replace_all(s, |captures: &Captures| {
+    ESCAPE_REGEX.replace_all(s, |captures: &Captures| {
         for group_name in &["oct", "hex", "special"] {
             if let Some(content) = captures.name(group_name) {
                 let c = match *group_name {
-                    "oct" => char::from_u32(from_str_radix(content, 8).unwrap()).expect("character code too large"),
-                    "hex" => char::from_u32(from_str_radix(content, 16).unwrap()).expect("character code too large"),
-                    "special" => match content.char_at(0) {
+                    "oct" => char::from_u32(u32::from_str_radix(content, 8).unwrap()).expect("character code too large"),
+                    "hex" => char::from_u32(u32::from_str_radix(content, 16).unwrap()).expect("character code too large"),
+                    "special" => match content.chars().next().unwrap() {
                         'n' => '\n',
                         'r' => '\r',
                         't' => '\t',
@@ -96,8 +113,7 @@ fn unescape(s: &str) -> String {
 }
 
 fn escape_html(s: &str) -> String {
-    let escape_regex = regex!("[<>&\"]");
-    escape_regex.replace_all(s, |captures: &Captures| {
+    ESCAPE_HTML_REGEX.replace_all(s, |captures: &Captures| {
         match captures.at(0).unwrap() {
             "<" => "&#x003c;",
             ">" => "&#x003e;",
@@ -219,7 +235,7 @@ impl Fsm {
     fn longest_output_len(&self) -> usize {
         self.actions.iter().flat_map(|actions| {
             actions.values().filter_map(|action| {
-                action.output().map(|s| s.utf16_units().count())
+                action.output().map(|s| UTF_16LE.encode(s, EncoderTrap::Strict).unwrap().len() / 2)
             })
         }).max().unwrap_or(1)
     }
@@ -275,11 +291,11 @@ fn test_fsm() {
     }
 
     assert_eq!(fsm.intermediate_states(),
-               vec![b"^", b"1", b"g"].into_iter().collect());
+               vec![b"^" as &'static [u8], b"1", b"g"].into_iter().collect());
 }
 
 #[test]
-#[should_fail]
+#[should_panic]
 fn test_fsm_duplicated() {
     let mut fsm = Fsm::new();
     fsm.insert(b"ab", Action::Output("c".to_owned()));
@@ -306,7 +322,7 @@ fn test_fsm_longest_output_len() {
 }
 
 #[test]
-#[should_fail]
+#[should_panic]
 fn test_fsm_ambig_output_goto_fail() {
     let mut fsm = Fsm::new();
     fsm.insert(b"ab", Action::Output("c".to_owned()));
@@ -328,13 +344,10 @@ fn test_fsm_ambig_output_goto_ok() {
 
 impl Fsm {
     fn parse<R: BufRead>(reader: R) -> Fsm {
-        // Note: Need to use "\t\n\r\v\f " instead of "\s" due to rust-lang/regex#28
-        let line_regex = regex!(r"^\s*([^#\t\n\r\v\f ]\S*)\s+([!-~]+)(?:\s+->\s*([!-~]+))?");
-
         let mut fsm = Fsm::new();
         for line in reader.lines() {
             if let Ok(line) = line {
-                if let Some(captures) = line_regex.captures(&line) {
+                if let Some(captures) = LINE_REGEX.captures(&line) {
                     let output = unescape(captures.at(1).unwrap());
                     let inputs = captures.at(2).unwrap();
                     let action = match captures.at(3) {
@@ -393,41 +406,41 @@ fn to_json_state_string(state: &[u8]) -> String {
 }
 
 impl Fsm {
-    fn into_json_object(self) -> Object {
-        let intermediates = self.intermediate_states().into_iter().map(|s| {
-            let state = to_json_state_string(s);
-            let output = Json::String(String::from_utf8(s.to_vec()).unwrap());
-            (state, output)
-        }).collect();
+    fn into_json_object(self) -> ObjectBuilder {
+        let mut result = ObjectBuilder::new();
 
-        let actions = self.actions.into_iter().enumerate().map(|(i, states)| {
-            let next_action = format!("{:02x}", i + 0x20);
-
-            Json::Object(states.into_iter().map(|entry| {
-                let this_state = to_json_state_string(&entry.0);
-                let mut result = Object::new();
-
-                if let Some(output) = entry.1.output() {
-                    result.insert("output".to_owned(), Json::String(output.clone()));
+        {
+            let intermediate_states = self.intermediate_states();
+            result = result.insert_object("intermediates", |mut obj| {
+                for s in intermediate_states {
+                    let state = to_json_state_string(s);
+                    let output = from_utf8(s).unwrap();
+                    obj = obj.insert(state, output);
                 }
+                obj
+            });
+        }
 
-                let next_state = match entry.1 {
-                    Action::Next => Some(format!("{}{}", this_state, next_action)),
-                    Action::OutputGoto(_, ref state) => Some(to_json_state_string(state)),
-                    _ => None
-                };
-                if let Some(state) = next_state {
-                    result.insert("state".to_owned(), Json::String(state));
-                }
+        let actions = self.actions;
+        let result = result.insert_array("actions", |mut arr| {
+            for (i, states) in actions.into_iter().enumerate() {
+                arr = arr.push_object(|mut obj| {
+                    for (from, to) in states {
+                        let this_state = to_json_state_string(&from);
+                        let (key, value) = match to {
+                            Action::Output(output) => ("output", output),
+                            Action::Next => ("state", format!("{}{:02x}", this_state, i + 0x20)),
+                            Action::OutputGoto(_, ref state) => ("state", to_json_state_string(state)),
+                        };
+                        obj = obj.insert_object(this_state, |o| o.insert(key, value))
+                    }
+                    obj
+                });
+            }
+            arr
+        });
 
-                (this_state, Json::Object(result))
-            }).collect())
-        }).collect();
-
-        container![
-            "actions".to_owned() => Json::Array(actions),
-            "intermediates".to_owned() => Json::Object(intermediates),
-        ]
+        result
     }
 }
 
@@ -445,7 +458,7 @@ fn test_to_json() {
     ".as_bytes());
 
     let result = fsm.into_json_object();
-    let expected = rustc_serialize::json::Builder::new(concat!(r#"
+    let expected = serde_json::from_str(concat!(r#"
         {
             "actions": [
                 {                           "#, /* space */ r#"
@@ -491,9 +504,9 @@ fn test_to_json() {
                 "c-6c6f": "lo"
             }
         }
-    "#).chars()).build().unwrap();
+    "#)).unwrap();
 
-    assert_eq!(Json::Object(result), expected);
+    assert_eq!(result.unwrap(), expected);
 }
 
 //}}}
@@ -502,40 +515,35 @@ fn test_to_json() {
 fn fsm_format(_c: &Context,
               helper: &Helper,
               _t: &Handlebars,
-              rc: &mut RenderContext) -> Result<String, RenderError> {
+              rc: &mut RenderContext) -> Result<(), RenderError> {
     let params = helper.params();
     let action = &params[0];
     let value = match *rc.get_local_var(&params[1]) {
-        Json::I64(v) => (v + 0x20) as u8,
-        Json::U64(v) => (v + 0x20) as u8,
-        _ => return Err(RenderError { desc: "Integer expected" }),
+        Value::I64(v) => (v + 0x20) as u8,
+        Value::U64(v) => (v + 0x20) as u8,
+        _ => return Err(RenderError { desc: "Integer expected".to_owned() }),
     };
-
-    let result = match &**action {
-        "action" => format!("{:02x}", value),
-        "key" => escape_html(from_utf8(&[value]).unwrap()),
-        _ => return Err(RenderError { desc: "Unknown fsm_action" }),
-    };
-
-    Ok(result)
+    match &**action {
+        "action" => write!(rc.writer, "{:02x}", value).map_err(|e| e.into()),
+        "key" => write!(rc.writer, "{}", escape_html(from_utf8(&[value]).unwrap())).map_err(|e| e.into()),
+        _ => Err(RenderError { desc: "Unknown fsm_action".to_owned() }),
+    }
 }
 
 fn escape_helper(context: &Context,
                  helper: &Helper,
                  _t: &Handlebars,
-                 rc: &mut RenderContext) -> Result<String, RenderError> {
+                 rc: &mut RenderContext) -> Result<(), RenderError> {
     let param = &helper.params()[0];
-    let input = match *context.navigate(rc.get_path(), param) {
-        Json::String(ref s) => s,
-        _ => return Err(RenderError { desc: "String expected" }),
-    };
-    Ok(escape_html(input))
+    match context.navigate(rc.get_path(), param).as_string() {
+        Some(input) => write!(rc.writer, "{}", escape_html(input)).map_err(|e| e.into()),
+        None => Err(RenderError { desc: "String expected".to_owned() }),
+    }
 }
 
 
 pub fn main() {
-
-    let args = Args::docopt().decode::<Args>().unwrap_or_else(|e| e.exit());
+    let args = Docopt::new(USAGE).unwrap().parse().unwrap_or_else(|e| e.exit());
 
     // Parse the input table into FSM.
     let fsm = {
@@ -547,18 +555,21 @@ pub fn main() {
     let maxout = fsm.longest_output_len();
 
     // Convert to JSON and populate some extra arguments.
-    let mut data = fsm.into_json_object();
-    let id = args.flag_id.unwrap_or_else(|| thread_rng().gen_range(-32768, 0));
-    data.insert("id".to_owned(), Json::I64(id as i64));
-    data.insert("group".to_owned(), Json::I64(args.flag_group as i64));
-    data.insert("name".to_owned(), Json::String(args.flag_name));
-    data.insert("maxout".to_owned(), Json::U64(maxout as u64));
-    let data = Json::Object(data);
+    let data = fsm.into_json_object();
+    let id = i64::from_str(args.get_str("--id")).unwrap_or_else(|_| thread_rng().gen_range(-32768, 0));
+    let group = i64::from_str(args.get_str("--group")).unwrap_or(126);
+    let name = args.get_str("--name");
+    let data = data.insert("id", id);
+    let data = data.insert("group", group);
+    let data = data.insert("name", name);
+    let data = data.insert("maxout", maxout);
+    let data = data.unwrap();
 
     // Create the template.
+    let template = args.get_str("--template");
     let template_string = {
         let mut result = String::with_capacity(1024);
-        let path = Path::new(&args.flag_template);
+        let path = Path::new(&template);
         let mut template_file = File::open(&path).unwrap();
         template_file.read_to_string(&mut result).unwrap();
         result
@@ -572,7 +583,6 @@ pub fn main() {
     // Render.
     let result = template.render("keylayout", &data).unwrap();
     print!("{}", result);
-
 }
 
 

@@ -13,15 +13,11 @@
 // You should have received a copy of the GNU General Public License along with
 // this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#![feature(io)]
-#![feature(plugin)]
-#![plugin(regex_macros)]
-
 extern crate regex;
-extern crate "rustc-serialize" as rustc_serialize;
+extern crate serde_json;
 
-
-use std::io::{BufReadExt, stdin};
+use regex::Regex;
+use std::io::{BufRead, stdin};
 use std::collections::HashMap;
 use std::borrow::ToOwned;
 
@@ -36,8 +32,8 @@ macro_rules! input_map {
 
 
 pub fn main() {
-    let line_regex = regex!(r#"^<Multi_key>((?: <[^>]+>)+)\s*:\s*"([^"]*)""#); //"
-    let input_regex = regex!("<([^>]+)>");
+    let line_regex = Regex::new(r#"^<Multi_key>((?: <[^>]+>)+)\s*:\s*"([^"]*)""#).unwrap();
+    let input_regex = Regex::new("<([^>]+)>").unwrap();
 
     let input_to_char = input_map![
         exclam = '!',

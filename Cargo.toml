@@ -8,14 +8,12 @@ repository = "https://github.com/kennytm/custom_keylayout"
 readme = "README.md"
 
 [dependencies]
-regex = "0.*"
-regex_macros = "0.*"
-docopt = "0.*"
-docopt_macros = "0.*"
-rustc-serialize = "0.*"
-handlebars = "0.*"
-rand = "0.*"
-
-[dependencies.literator]
-git = "git://github.com/kmcallister/literator"
+regex = "0.1.65"
+lazy_static = "0.1.16"
+docopt = "0.6.80"
+serde_json = "0.7.0"
+handlebars = { version = "0.16.0", features = ["serde_type"] }
+rand = "0.3.14"
+hex = "0.2.0"
+encoding = "0.2.32" # <- remove dependency after Rust 1.8.0.
 
